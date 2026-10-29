@@ -1,0 +1,3296 @@
+# -*- coding: utf-8 -*-
+"""
+Full Site Generator for Foresprint by AIQoD
+Updated to:
+- Remove header navigation links and content
+- Embed real MP4 video clips in the workflow section with interactive switcher
+- Replace SVG graphs with authentic high-resolution product UI mockups
+- Maintain 100% adherence to all 14 content sections from Excel
+"""
+
+import json
+
+def get_schema_json():
+    faqs = [
+        ("What is project estimation software?", "Project estimation software works out the team, timeline, budget and risks a project will need before it starts. Foresprint is an agentic project estimation, planning and forecasting solution built on the AIQoD platform. Its agents build each estimate from the past projects closest to the new one, and people review and approve every estimate."),
+        ("Is Foresprint a project management tool?", "No. Foresprint does not run or manage projects, and it does not replace the people who do. It estimates, plans and forecasts, for new projects and for projects already running. Your project management tools keep doing the day-to-day tracking."),
+        ("How does Foresprint help close proposals faster?", "Pre-sales starts from a ready estimate instead of a blank sheet. The team, timeline, budget and risks are proposed from the closest past projects, so the proposal team checks and adjusts rather than building the number by hand."),
+        ("Where do the estimates come from?", "From your own project history. Foresprint searches past projects for the closest matches and shows each match with a percentage. The proposed team, risks, timeline and budget are each shown next to the past project they came from."),
+        ("Can Foresprint help with fixed price project estimation?", "Yes. Pre-sales and bid teams use it to estimate proposals from real delivery history, with risks listed before the price is fixed and a clear source behind every number in the quote."),
+        ("Does Foresprint work with our existing project tools?", "Yes. It works with the systems you already use and reads project data from them. Tasks, updates and tracking stay where they are. Nothing is replaced or migrated."),
+        ("How does project forecasting work in Foresprint?", "Forecasts are on demand. When a forecast is requested, Foresprint checks live data from your project tools against how similar past projects finished. It returns the estimate at completion, cost overrun and risk alerts, and resource utilization suggestions."),
+        ("Does Foresprint calculate estimate at completion (EAC)?", "Yes. Every forecast includes the estimate at completion, based on current progress and how similar past projects performed."),
+        ("How does AI project planning work in Foresprint?", "The reviewed estimate turns straight into a full task and milestone plan. When the start date changes, every task and milestone date moves with it, so the plan does not need to be rebuilt."),
+        ("Can Foresprint be used on a project that is already running?", "Yes. It works for new projects and existing ones. For a running project it compares actuals with the baseline and forecasts the finish."),
+        ("Can the team change what Foresprint suggests?", "Yes. The proposed team, risk register, timeline and budget can all be edited before the plan is built. People make every final call."),
+        ("Does Foresprint warn about cost overruns?", "Yes. Each forecast flags where cost is heading over budget and which risks are rising, along with suggestions on where people are over or under used."),
+        ("How long does it take to go live?", "The first configuration goes live in a day, with measurable results typically inside three to six weeks.")
+    ]
+
+    faq_schema = []
+    for q, a in faqs:
+        faq_schema.append({
+            "@type": "Question",
+            "name": q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": a
+            }
+        })
+
+    graph = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "SoftwareApplication",
+                "name": "Foresprint",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "AIQoD"
+                },
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "url": "https://aiqod.com/foresprint",
+                "description": "Foresprint by AIQoD estimates the team, timeline, budget and risks from your past projects, builds the full project plan and forecasts the finish on demand."
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": faq_schema
+            }
+        ]
+    }
+    return json.dumps(graph, indent=2, ensure_ascii=False)
+
+def generate_html():
+    schema_json = get_schema_json()
+
+    # Clean SVG icons
+    svg_check = '<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>'
+    svg_chevron = '<svg class="step-dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>'
+    svg_cross = '<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>'
+    svg_warning = '<svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>'
+    svg_clock = '<svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
+
+    html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foresprint by AIQoD | Project Estimation and Forecasting Software</title>
+  <meta name="description" content="Foresprint by AIQoD estimates the team, timeline, budget and risks from your past projects, builds the full project plan and forecasts the finish on demand.">
+  
+  <!-- Keywords -->
+  <meta name="keywords" content="project estimation software, software estimation, estimate at completion, project estimation, project cost estimation, software project estimation, project forecasting, AI project planning, risk register, cost overrun, resource utilization, resource forecasting, fixed price project">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Foresprint by AIQoD | Know the timeline before the project starts">
+  <meta property="og:description" content="Project estimation, planning and forecasting built on your own delivery history. Proposals go out faster, at a price the firm can defend.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aiqod.com/foresprint">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{schema_json}
+  </script>
+
+  <style>
+    :root {{
+      --brand:            #D74242;
+      --brand-glow:       rgba(215, 66, 66, 0.35);
+      --brand-subtle:     rgba(215, 66, 66, 0.1);
+      --brand-light:      #ff6b6b;
+      --bg:               #080C16;
+      --surface:          #0B1221;
+      --surface-elevated: #111A30;
+      --surface-card:     #0E1626;
+      --text:             #9AA1AC;
+      --heading:          #FFFFFF;
+      --muted:            rgba(154, 161, 172, 0.65);
+      --line:             rgba(154, 161, 172, 0.14);
+      --line-hover:       rgba(154, 161, 172, 0.32);
+      --accent-cyan:      #06B6D4;
+      --accent-green:     #10B981;
+      --accent-amber:     #F59E0B;
+      --accent-purple:    #8B5CF6;
+    }}
+
+    *, *::before, *::after {{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }}
+
+    ::selection {{
+      background: var(--brand);
+      color: #FFFFFF;
+    }}
+
+    html {{
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }}
+
+    body {{
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(ellipse 90% 60% at 50% -10%, rgba(215, 66, 66, 0.15), transparent 70%),
+        linear-gradient(to right, rgba(154, 161, 172, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(154, 161, 172, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 48px 48px, 48px 48px;
+      color: var(--text);
+      overflow-x: hidden;
+      width: 100%;
+    }}
+
+    /* Typography */
+    h1 {{
+      font-size: clamp(38px, 4.8vw, 58px);
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--heading);
+      margin-bottom: 24px;
+    }}
+
+    h2 {{
+      font-size: clamp(28px, 3.4vw, 40px);
+      line-height: 1.18;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--heading);
+      margin-bottom: 20px;
+    }}
+
+    h3 {{
+      font-size: 21px;
+      line-height: 1.3;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 12px;
+    }}
+
+    p {{
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--text);
+    }}
+
+    p + p {{
+      margin-top: 16px;
+    }}
+
+    small, .text-small {{
+      font-size: 14px;
+    }}
+
+    .text-muted {{
+      color: var(--muted);
+    }}
+
+    .container {{
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }}
+
+    .prose-680 {{
+      max-width: 680px;
+    }}
+
+    .prose-760 {{
+      max-width: 760px;
+    }}
+
+    .section-header {{
+      margin-bottom: 48px;
+    }}
+
+    .section-header.text-center {{
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }}
+
+    /* Section Rhythm */
+    section {{
+      width: 100%;
+      padding-top: 110px;
+      padding-bottom: 110px;
+      position: relative;
+    }}
+
+    section.hero-section {{
+      padding-top: 100px;
+      padding-bottom: 110px;
+    }}
+
+    section.bg-surface {{
+      background-color: var(--surface);
+      background-image: 
+        linear-gradient(to right, rgba(154, 161, 172, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(154, 161, 172, 0.025) 1px, transparent 1px);
+      background-size: 48px 48px, 48px 48px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }}
+
+    section.bg-dark-band {{
+      background-color: #060911;
+      border-top: 1px solid rgba(215, 66, 66, 0.2);
+      border-bottom: 1px solid rgba(215, 66, 66, 0.2);
+      box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.7);
+    }}
+
+    /* Buttons */
+    .btn-group {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-top: 36px;
+      margin-bottom: 24px;
+    }}
+
+    .btn {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      font-family: inherit;
+      border: 1px solid transparent;
+      box-shadow: 0 1px 3px rgba(0,0,0,.15);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }}
+
+    .btn:active {{
+      transform: scale(0.98);
+    }}
+
+    .btn-brand {{
+      background: var(--brand);
+      color: #FFFFFF;
+      border-color: var(--brand);
+      box-shadow: 0 4px 18px rgba(215, 66, 66, 0.35);
+    }}
+
+    .btn-brand:hover {{
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(215, 66, 66, 0.55);
+      filter: brightness(1.08);
+      color: #FFFFFF;
+    }}
+
+    .btn-outline {{
+      background: rgba(11, 18, 33, 0.65);
+      color: var(--heading);
+      border-color: var(--line);
+      backdrop-filter: blur(8px);
+    }}
+
+    .btn-outline:hover {{
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.06);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }}
+
+    .btn-contrast-solid {{
+      background-color: #FFFFFF;
+      color: var(--brand);
+      border-color: #FFFFFF;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      font-weight: 700;
+    }}
+
+    .btn-contrast-solid:hover {{
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+      background-color: #F8FAFC;
+      color: var(--brand);
+    }}
+
+    .btn-contrast-outline {{
+      background-color: transparent;
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(8px);
+    }}
+
+    .btn-contrast-outline:hover {{
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: #FFFFFF;
+      transform: translateY(-2px);
+      color: #FFFFFF;
+    }}
+
+    /* Eyebrow Pill */
+    .eyebrow {{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(215, 66, 66, 0.12);
+      border: 1px solid rgba(215, 66, 66, 0.35);
+      color: var(--brand-light);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+      box-shadow: 0 0 14px rgba(215, 66, 66, 0.18);
+    }}
+
+    .eyebrow-dot {{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--brand);
+      box-shadow: 0 0 8px var(--brand);
+      animation: pulseDot 2s infinite ease-in-out;
+    }}
+
+    @keyframes pulseDot {{
+      0%, 100% {{ transform: scale(1); opacity: 1; }}
+      50% {{ transform: scale(0.85); opacity: 0.5; }}
+    }}
+
+    .live-pulse-dot {{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-green);
+      box-shadow: 0 0 8px var(--accent-green);
+      display: inline-block;
+      animation: pulseDot 2s infinite ease-in-out;
+    }}
+
+    .hero-trust {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 12px;
+    }}
+
+    /* =========================================================================
+       1. HERO SECTION (Split Hero with Product Screenshot Card)
+       ========================================================================= */
+    .hero-split {{
+      display: flex;
+      align-items: center;
+      gap: 52px;
+    }}
+
+    .hero-left {{
+      flex: 0 0 48%;
+      max-width: 48%;
+    }}
+
+    .hero-right {{
+      flex: 0 0 52%;
+      max-width: 52%;
+    }}
+
+    .product-preview-card {{
+      background: var(--surface-card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px -10px rgba(0,0,0,0.8), 0 0 30px rgba(215, 66, 66, 0.15);
+      position: relative;
+      transition: all 0.3s ease;
+    }}
+
+    .product-preview-card:hover {{
+      border-color: rgba(215, 66, 66, 0.4);
+      box-shadow: 0 28px 70px -10px rgba(0,0,0,0.9), 0 0 36px rgba(215, 66, 66, 0.25);
+    }}
+
+    .preview-topbar {{
+      padding: 12px 18px;
+      background: rgba(8, 12, 22, 0.95);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }}
+
+    .window-controls {{
+      display: flex;
+      gap: 7px;
+    }}
+
+    .win-dot {{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }}
+
+    .win-dot.red {{ background: #EF4444; }}
+    .win-dot.yellow {{ background: #F59E0B; }}
+    .win-dot.green {{ background: #10B981; }}
+
+    .preview-screen-title {{
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }}
+
+    .preview-media-viewport {{
+      position: relative;
+      width: 100%;
+      background: #080C16;
+      overflow: hidden;
+    }}
+
+    .product-hero-img {{
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }}
+
+    .product-hero-img:hover {{
+      transform: scale(1.015);
+    }}
+
+    .site-header {{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 12, 22, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
+    }}
+
+    .header-container {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }}
+
+    .header-brand {{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }}
+
+    .brand-logo {{
+      height: 28px;
+      width: auto;
+      display: block;
+    }}
+
+    .brand-sep {{
+      color: var(--line-hover);
+      font-size: 18px;
+      font-weight: 300;
+    }}
+
+    .brand-product {{
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }}
+
+    .brand-badge {{
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(215, 66, 66, 0.15);
+      border: 1px solid rgba(215, 66, 66, 0.35);
+      color: var(--brand-light);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }}
+
+    .btn-sm {{
+      padding: 8px 18px;
+      font-size: 13.5px;
+      border-radius: 6px;
+    }}
+
+    .hero-title {{
+      margin-bottom: 24px;
+    }}
+
+    .hero-product-title {{
+      display: block;
+      font-size: clamp(40px, 5.2vw, 58px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #FFFFFF 40%, var(--brand-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }}
+
+    .hero-tagline-title {{
+      display: block;
+      font-size: clamp(23px, 3.2vw, 34px);
+      font-weight: 600;
+      color: var(--heading);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }}
+
+    /* =========================================================================
+       2. THE PROBLEM SECTION
+       ========================================================================= */
+    .problem-cards-grid {{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }}
+
+    .problem-card {{
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 280px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }}
+
+    .problem-card:hover {{
+      border-color: rgba(215, 66, 66, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    }}
+
+    .card-icon-wrap {{
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(215, 66, 66, 0.1);
+      border: 1px solid rgba(215, 66, 66, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--brand);
+    }}
+
+    .cost-tag {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #FBBF24;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 24px;
+      align-self: flex-start;
+    }}
+
+    /* =========================================================================
+       3. THE SHIFT SECTION
+       ========================================================================= */
+    .shift-split {{
+      display: flex;
+      align-items: center;
+      gap: 56px;
+    }}
+
+    .shift-left {{
+      flex: 0 0 46%;
+      max-width: 46%;
+    }}
+
+    .shift-right {{
+      flex: 0 0 54%;
+      max-width: 54%;
+    }}
+
+    .comparison-table-card {{
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }}
+
+    .comp-header {{
+      display: grid;
+      grid-template-columns: 28% 36% 36%;
+      background: var(--surface-elevated);
+      padding: 16px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--heading);
+      border-bottom: 1px solid var(--line);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }}
+
+    .comp-row {{
+      display: grid;
+      grid-template-columns: 28% 36% 36%;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      align-items: center;
+      transition: background 0.15s ease;
+    }}
+
+    .comp-row:last-child {{
+      border-bottom: none;
+    }}
+
+    .comp-row:hover {{
+      background: rgba(255, 255, 255, 0.02);
+    }}
+
+    .comp-col-dim {{
+      font-weight: 600;
+      color: var(--heading);
+    }}
+
+    .comp-col-today {{
+      color: var(--muted);
+      padding-right: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }}
+
+    .comp-col-foresprint {{
+      color: #E2E8F0;
+      font-weight: 500;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }}
+
+    .cell-icon {{
+      flex-shrink: 0;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+    }}
+
+    .icon-cross {{
+      color: #EF4444;
+    }}
+
+    .icon-check {{
+      color: var(--accent-green);
+    }}
+
+    /* =========================================================================
+       4. HOW FORESPRINT WORKS (Clickable 6 Steps Rail + Video Viewport)
+       ========================================================================= */
+    .how-intro {{
+      margin-bottom: 48px;
+    }}
+
+    .how-grid {{
+      display: grid;
+      grid-template-columns: 44% 56%;
+      gap: 48px;
+      align-items: flex-start;
+    }}
+
+    /* Workflow Phase Bar */
+    .how-phase-bar {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding: 6px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }}
+
+    .how-phase-pill {{
+      flex: 1;
+      text-align: center;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }}
+
+    .how-phase-pill:hover {{
+      color: var(--heading);
+      background: rgba(154, 161, 172, 0.06);
+    }}
+
+    .how-phase-pill.active {{
+      background: rgba(215, 66, 66, 0.15);
+      border: 1px solid var(--brand);
+      color: #FFFFFF;
+      box-shadow: 0 0 12px rgba(215, 66, 66, 0.25);
+    }}
+
+    .how-phase-pill .phase-range {{
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+    }}
+
+    .how-phase-pill.active .phase-range {{
+      color: var(--brand-light);
+    }}
+
+    /* Included Phase Dividers */
+    .included-phase-header {{
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+      margin-bottom: -4px;
+    }}
+
+    .included-phase-title {{
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brand-light);
+      background: rgba(215, 66, 66, 0.1);
+      border: 1px solid rgba(215, 66, 66, 0.25);
+      padding: 4px 12px;
+      border-radius: 6px;
+    }}
+
+    .included-phase-line {{
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }}
+
+    .how-rail {{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }}
+
+    .how-rail-progress {{
+      position: absolute;
+      left: 35px;
+      top: 30px;
+      bottom: 30px;
+      width: 2px;
+      background: var(--line);
+      z-index: 0;
+    }}
+
+    .how-rail-progress-bar {{
+      width: 100%;
+      background: linear-gradient(180deg, var(--brand), var(--brand-light));
+      border-radius: 2px;
+      height: 0%;
+      transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 8px var(--brand);
+    }}
+
+    .how-step {{
+      background-color: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 20px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
+      color: inherit;
+      font-family: inherit;
+      position: relative;
+      z-index: 1;
+    }}
+
+    .how-step:hover {{
+      border-color: var(--line-hover);
+      transform: translateX(3px);
+    }}
+
+    .how-step[aria-expanded="true"] {{
+      background: var(--surface-elevated);
+      border-color: var(--brand);
+      box-shadow: 0 0 22px rgba(215, 66, 66, 0.22);
+    }}
+
+    .how-step-header {{
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+    }}
+
+    .step-badge {{
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(154, 161, 172, 0.1);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }}
+
+    .how-step[aria-expanded="true"] .step-badge {{
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #FFFFFF;
+      box-shadow: 0 0 10px rgba(215, 66, 66, 0.6);
+    }}
+
+    .step-title {{
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--heading);
+      flex: 1;
+      transition: color 0.2s ease;
+    }}
+
+    .how-step[aria-expanded="true"] .step-title {{
+      color: #FFFFFF;
+    }}
+
+    .step-dropdown-icon {{
+      width: 18px;
+      height: 18px;
+      color: var(--muted);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+      flex-shrink: 0;
+      margin-left: auto;
+    }}
+
+    .how-step[aria-expanded="true"] .step-dropdown-icon {{
+      transform: rotate(180deg);
+      color: var(--brand);
+    }}
+
+    .how-step-body {{
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, margin 0.3s ease;
+      margin-top: 0;
+      padding-left: 46px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }}
+
+    .how-step[aria-expanded="true"] .how-step-body {{
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 14px;
+      color: #D1D5DB;
+    }}
+
+    .how-video-card {{
+      background-color: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px -10px rgba(0,0,0,0.8), 0 0 0 1px rgba(154, 161, 172, 0.08);
+      position: sticky;
+      top: 40px;
+      transition: all 0.3s ease;
+    }}
+
+    .how-video-card:hover {{
+      border-color: rgba(215, 66, 66, 0.35);
+      box-shadow: 0 24px 60px -10px rgba(0,0,0,0.9), 0 0 24px rgba(215, 66, 66, 0.2);
+    }}
+
+    .how-video-topbar {{
+      padding: 12px 18px;
+      background: rgba(8, 12, 22, 0.95);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }}
+
+    .video-screen-name {{
+      font-weight: 600;
+      color: var(--heading);
+      font-size: 13px;
+      letter-spacing: 0.01em;
+    }}
+
+    .video-status {{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }}
+
+    .video-dot {{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand);
+      animation: pulseDot 1.5s infinite;
+    }}
+
+    .how-video-viewport {{
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background-color: var(--surface);
+      overflow: hidden;
+    }}
+
+    .how-video-viewport video {{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 300ms ease, transform 300ms ease;
+      pointer-events: none;
+    }}
+
+    .how-video-viewport video.is-active {{
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }}
+
+    .how-video-caption-bar {{
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      background: rgba(8, 12, 22, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(154, 161, 172, 0.15);
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-white);
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }}
+
+    .video-caption-tag {{
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(215, 66, 66, 0.2);
+      border: 1px solid rgba(215, 66, 66, 0.4);
+      color: var(--brand-light);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }}
+
+    .video-caption-text {{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #E2E8F0;
+    }}
+
+    /* =========================================================================
+       5. ESTIMATES BACKED BY PAST PROJECTS
+       ========================================================================= */
+    .backed-split {{
+      display: flex;
+      align-items: center;
+      gap: 52px;
+    }}
+
+    .backed-left {{
+      flex: 0 0 52%;
+      max-width: 52%;
+    }}
+
+    .backed-right {{
+      flex: 0 0 48%;
+      max-width: 48%;
+    }}
+
+    .proof-item {{
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }}
+
+    .proof-icon-box {{
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(215, 66, 66, 0.1);
+      border: 1px solid rgba(215, 66, 66, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+      flex-shrink: 0;
+    }}
+
+    .proof-text {{
+      font-size: 15px;
+      color: var(--heading);
+      font-weight: 500;
+    }}
+
+    .comp-strip {{
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }}
+
+    .strip-box {{
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px 24px;
+    }}
+
+    .strip-title {{
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }}
+
+    .strip-rule {{
+      border-left: 3px solid rgba(154, 161, 172, 0.4);
+    }}
+
+    .strip-rule .strip-title {{
+      color: var(--muted);
+    }}
+
+    .strip-foresprint {{
+      border-left: 3px solid var(--brand);
+      background: rgba(215, 66, 66, 0.04);
+    }}
+
+    .strip-foresprint .strip-title {{
+      color: var(--brand-light);
+    }}
+
+    /* Caption ticker overlay */
+    .avatar-caption-ticker {{
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      background: rgba(8, 12, 22, 0.9);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      padding: 10px 14px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 13px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }}
+
+    .avatar-caption-label {{
+      font-size: 11px;
+      color: var(--brand-light);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }}
+
+    .avatar-caption-text {{
+      color: #FFFFFF;
+      line-height: 1.4;
+    }}
+
+    /* =========================================================================
+       6. BUILT FOR TWO TEAMS (Tabs)
+       ========================================================================= */
+    .teams-tab-nav {{
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 36px;
+    }}
+
+    .team-tab-btn {{
+      padding: 12px 28px;
+      border-radius: 30px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }}
+
+    .team-tab-btn:hover {{
+      color: var(--heading);
+      border-color: var(--line-hover);
+    }}
+
+    .team-tab-btn.active {{
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #FFFFFF;
+      box-shadow: 0 4px 16px rgba(215, 66, 66, 0.4);
+    }}
+
+    .team-tab-pane {{
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 40px;
+    }}
+
+    .team-tab-pane.active {{
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }}
+
+    .tab-content-grid {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 32px;
+    }}
+
+    .outcome-bullets {{
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }}
+
+    .outcome-bullet {{
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--heading);
+      font-weight: 500;
+    }}
+
+    .bullet-icon {{
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }}
+
+    .tab-screenshot-strip {{
+      background: var(--surface-elevated);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+    }}
+
+    .tab-preview-img {{
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--line);
+    }}
+
+    .tab-screenshot-footer {{
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: rgba(8, 12, 22, 0.95);
+    }}
+
+    /* =========================================================================
+       7. THE PLAN FOLLOWS THE DATE (Interactive Gantt)
+       ========================================================================= */
+    .gantt-widget {{
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 32px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+    }}
+
+    .gantt-split {{
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+    }}
+
+    .gantt-controls {{
+      flex: 0 0 32%;
+      max-width: 32%;
+      background: var(--surface-elevated);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px;
+    }}
+
+    .gantt-date-input {{
+      width: 100%;
+      padding: 10px 14px;
+      background: #080C16;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--heading);
+      font-family: inherit;
+      font-size: 14px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }}
+
+    .quick-preset-btns {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }}
+
+    .preset-btn {{
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }}
+
+    .preset-btn:hover {{
+      border-color: var(--brand);
+      color: var(--heading);
+    }}
+
+    .gantt-calc-summary {{
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }}
+
+    .summary-row {{
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+    }}
+
+    .summary-row strong {{
+      color: var(--heading);
+    }}
+
+    .gantt-view {{
+      flex: 0 0 68%;
+      max-width: 68%;
+      overflow-x: auto;
+    }}
+
+    .gantt-timeline-header {{
+      display: grid;
+      grid-template-columns: 200px repeat(12, 1fr);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+    }}
+
+    .gantt-row {{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(154, 161, 172, 0.08);
+      position: relative;
+    }}
+
+    .gantt-task-name {{
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--heading);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 12px;
+    }}
+
+    .gantt-track {{
+      position: relative;
+      height: 24px;
+      background: rgba(154, 161, 172, 0.04);
+      border-radius: 4px;
+    }}
+
+    .gantt-bar {{
+      position: absolute;
+      top: 2px;
+      height: 20px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #D74242, #E25555);
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #FFFFFF;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(215, 66, 66, 0.35);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }}
+
+    /* =========================================================================
+       8. FORECAST ON DEMAND SECTION
+       ========================================================================= */
+    .forecast-split {{
+      display: flex;
+      align-items: center;
+      gap: 52px;
+    }}
+
+    .forecast-left {{
+      flex: 0 0 46%;
+      max-width: 46%;
+    }}
+
+    .forecast-right {{
+      flex: 0 0 54%;
+      max-width: 54%;
+    }}
+
+    .req-forecast-btn {{
+      margin-top: 24px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      background: rgba(215, 66, 66, 0.15);
+      border: 1px solid rgba(215, 66, 66, 0.4);
+      color: var(--brand-light);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }}
+
+    .req-forecast-btn:hover {{
+      background: var(--brand);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(215, 66, 66, 0.4);
+    }}
+
+    /* =========================================================================
+       9. INTEGRATIONS SECTION
+       ========================================================================= */
+    .integration-diagram {{
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+    }}
+
+    .diagram-top-block {{
+      width: 100%;
+      max-width: 760px;
+      background: linear-gradient(135deg, rgba(215, 66, 66, 0.15), rgba(17, 26, 48, 0.8));
+      border: 2px solid var(--brand);
+      border-radius: 14px;
+      padding: 24px 32px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(215, 66, 66, 0.25);
+    }}
+
+    .diagram-top-title {{
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }}
+
+    .diagram-top-desc {{
+      font-size: 14px;
+      color: var(--text);
+    }}
+
+    .connector-flow {{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--brand);
+    }}
+
+    .pulse-connector {{
+      width: 2px;
+      height: 32px;
+      background: linear-gradient(to bottom, var(--brand), transparent);
+      animation: pulseLine 1.5s infinite;
+    }}
+
+    @keyframes pulseLine {{
+      0% {{ opacity: 0.3; height: 16px; }}
+      50% {{ opacity: 1; height: 32px; }}
+      100% {{ opacity: 0.3; height: 16px; }}
+    }}
+
+    .diagram-bottom-block {{
+      width: 100%;
+      max-width: 760px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px 32px;
+      text-align: center;
+    }}
+
+    .diagram-bottom-title {{
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 16px;
+    }}
+
+    .tools-pill-grid {{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }}
+
+    .tool-pill {{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--line);
+      color: var(--heading);
+      font-size: 13px;
+      font-weight: 600;
+    }}
+
+    .diagram-caption {{
+      margin-top: 20px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--heading);
+    }}
+
+    .integration-link-wrap {{
+      text-align: center;
+      margin-top: 16px;
+    }}
+
+    .text-link {{
+      color: var(--brand-light);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s ease;
+    }}
+
+    .text-link:hover {{
+      gap: 10px;
+      color: #FFFFFF;
+    }}
+
+    /* =========================================================================
+       10. PROJECT HEALTH REPORTING (Wide Dashboard Panel)
+       ========================================================================= */
+    .dashboard-image-panel {{
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 60px -10px rgba(0,0,0,0.8), 0 0 30px rgba(215, 66, 66, 0.12);
+      margin-top: 40px;
+      background: var(--surface);
+      position: relative;
+    }}
+
+    .dashboard-image-panel img {{
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }}
+
+    .dashboard-metrics-strip {{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 32px;
+    }}
+
+    .metric-panel-card {{
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.2s ease;
+    }}
+
+    .metric-panel-card:hover {{
+      border-color: var(--line-hover);
+      transform: translateY(-2px);
+    }}
+
+    .metric-panel-title {{
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }}
+
+    .metric-panel-val {{
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 4px;
+    }}
+
+    .metric-panel-desc {{
+      font-size: 12px;
+      color: var(--text);
+    }}
+
+    /* =========================================================================
+       11. CONFIGURED TO HOW YOU DELIVER (Contrasting Cards)
+       ========================================================================= */
+    .config-cards-grid {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 40px;
+    }}
+
+    .config-card {{
+      border-radius: 14px;
+      padding: 36px;
+      position: relative;
+    }}
+
+    .config-card-muted {{
+      background: var(--surface);
+      border: 1px solid var(--line);
+      opacity: 0.85;
+    }}
+
+    .config-card-brand {{
+      background: linear-gradient(135deg, rgba(215, 66, 66, 0.12), rgba(11, 18, 33, 0.95));
+      border: 2px solid var(--brand);
+      box-shadow: 0 0 30px rgba(215, 66, 66, 0.2);
+    }}
+
+    .time-to-value-strip {{
+      margin-top: 28px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px 24px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--heading);
+    }}
+
+    .qualifier-note {{
+      margin-top: 12px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+    }}
+
+    /* =========================================================================
+       12. WHAT IS INCLUDED (8 Tiles)
+       ========================================================================= */
+    .included-grid {{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }}
+
+    .included-tile {{
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.25s ease;
+    }}
+
+    .included-tile:hover {{
+      border-color: var(--line-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }}
+
+    .included-icon-box {{
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(215, 66, 66, 0.1);
+      border: 1px solid rgba(215, 66, 66, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+      margin-bottom: 16px;
+    }}
+
+    .included-heading {{
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 8px;
+    }}
+
+    .included-desc {{
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--muted);
+    }}
+
+    /* =========================================================================
+       13. FAQ ACCORDION
+       ========================================================================= */
+    .faq-container {{
+      max-width: 820px;
+      margin: 40px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }}
+
+    details.faq-item {{
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }}
+
+    details.faq-item:hover {{
+      border-color: var(--line-hover);
+    }}
+
+    details.faq-item[open] {{
+      border-color: rgba(215, 66, 66, 0.4);
+      background: var(--surface-elevated);
+    }}
+
+    summary.faq-question {{
+      padding: 20px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--heading);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }}
+
+    summary.faq-question::-webkit-details-marker {{
+      display: none;
+    }}
+
+    .faq-icon {{
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--muted);
+      transition: transform 0.2s ease;
+    }}
+
+    details.faq-item[open] .faq-icon {{
+      transform: rotate(45deg);
+      color: var(--brand);
+    }}
+
+    .faq-answer {{
+      padding: 0 24px 22px 24px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text);
+    }}
+
+    /* =========================================================================
+       14. FINAL CTA
+       ========================================================================= */
+    .closing-band {{
+      background: var(--brand);
+      background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15), transparent 70%);
+      padding: 100px 0;
+      text-align: center;
+      color: #FFFFFF;
+    }}
+
+    .closing-band h2 {{
+      color: #FFFFFF;
+      font-size: clamp(32px, 4vw, 44px);
+    }}
+
+    .closing-line {{
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 640px;
+      margin: 0 auto;
+    }}
+
+    .closing-buttons {{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 36px;
+    }}
+
+    /* Footer */
+    .site-footer {{
+      background: #050811;
+      border-top: 1px solid var(--line);
+      padding: 60px 0 36px;
+      font-size: 14px;
+    }}
+
+    .footer-grid {{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }}
+
+    .footer-desc {{
+      color: var(--muted);
+      font-size: 13.5px;
+      margin-top: 12px;
+      max-width: 340px;
+      line-height: 1.6;
+    }}
+
+    .positioning-guard-pill {{
+      display: inline-block;
+      margin-top: 16px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(154, 161, 172, 0.08);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }}
+
+    .footer-col h4 {{
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }}
+
+    .footer-col ul {{
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }}
+
+    .footer-col a {{
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }}
+
+    .footer-col a:hover {{
+      color: var(--heading);
+    }}
+
+    .footer-bottom {{
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }}
+
+    .example-data-tag {{
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(154, 161, 172, 0.12);
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }}
+
+    @keyframes fadeIn {{
+      from {{ opacity: 0; transform: translateY(6px); }}
+      to {{ opacity: 1; transform: translateY(0); }}
+    }}
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {{
+      .hero-split, .shift-split, .backed-split, .forecast-split {{
+        flex-direction: column;
+        gap: 40px;
+      }}
+      .hero-left, .hero-right, .shift-left, .shift-right, .backed-left, .backed-right, .forecast-left, .forecast-right {{
+        flex: 0 0 100%;
+        max-width: 100%;
+      }}
+      .how-grid {{
+        grid-template-columns: 1fr;
+      }}
+      .how-video-card {{
+        position: static;
+      }}
+      .problem-cards-grid {{
+        grid-template-columns: 1fr;
+      }}
+      .included-grid {{
+        grid-template-columns: repeat(2, 1fr);
+      }}
+      .gantt-split {{
+        flex-direction: column;
+      }}
+      .gantt-controls, .gantt-view {{
+        flex: 0 0 100%;
+        max-width: 100%;
+      }}
+      .dashboard-metrics-strip {{
+        grid-template-columns: repeat(2, 1fr);
+      }}
+      .config-cards-grid {{
+        grid-template-columns: 1fr;
+      }}
+      .footer-grid {{
+        grid-template-columns: 1fr 1fr;
+      }}
+    }}
+
+    @media (max-width: 768px) {{
+      section {{
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }}
+      .tab-content-grid {{
+        grid-template-columns: 1fr;
+      }}
+      .comp-strip {{
+        grid-template-columns: 1fr;
+      }}
+      .included-grid {{
+        grid-template-columns: 1fr;
+      }}
+      .dashboard-metrics-strip {{
+        grid-template-columns: 1fr;
+      }}
+      .footer-grid {{
+        grid-template-columns: 1fr;
+      }}
+      .comp-header, .comp-row {{
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }}
+    }}
+  </style>
+</head>
+<body>
+
+  <!-- =======================================================================
+       SITE HEADER (Logo & Product Title Only - No Section Menu Clutter)
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="header-brand">
+        <span class="brand-product">Foresprint</span>
+        <span class="brand-badge">Project Estimation &amp; Forecasting</span>
+      </div>
+      <div class="header-actions">
+        <a href="#contact" class="btn btn-sm btn-brand">Book a demo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =======================================================================
+       1. HERO SECTION
+       ========================================================================= -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-split">
+      <div class="hero-left">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Foresprint by AIQoD
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-product-title">Foresprint</span>
+          <span class="hero-tagline-title">Know the timeline before the project starts</span>
+        </h1>
+        <p>Foresprint is project estimation software for IT and software services firms, with planning and forecasting built in. Its agents estimate the team, timeline, budget and risks from the firm&#39;s own past projects, turn that into a full project plan and forecast the finish whenever it is asked. Proposals go out faster, at a price the firm can defend.</p>
+        <div class="btn-group">
+          <a href="#contact" class="btn btn-brand">Book a demo</a>
+          <a href="#contact" class="btn btn-outline">Talk to our team</a>
+        </div>
+        <div class="hero-trust">
+          <span class="live-pulse-dot"></span>
+          Live today on the AIQoD platform.
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="product-preview-card">
+          <div class="preview-topbar">
+            <div class="window-controls">
+              <span class="win-dot red"></span>
+              <span class="win-dot yellow"></span>
+              <span class="win-dot green"></span>
+            </div>
+            <div class="preview-screen-title">Foresprint Live Drift &amp; Estimation Console</div>
+            <span class="example-data-tag">Example data</span>
+          </div>
+
+          <div class="preview-media-viewport">
+            <img src="hero-dashboard.jpg" alt="Foresprint AI Project Estimation and Timeline Drift Dashboard" class="product-hero-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       2. THE PROBLEM SECTION
+       ========================================================================= -->
+  <section class="problem-section" id="problem">
+    <div class="container">
+      <div class="section-header">
+        <h2>A project is won or lost on the number quoted and how fast it arrives.</h2>
+        <p class="prose-760">More deals are fixed price or tied to outcomes, and clients expect AI savings to show up in the price from day one. A project&#39;s margin is largely set the day it is signed, and the firm that comes back first with a clear, credible proposal often wins the deal.</p>
+      </div>
+
+      <div class="problem-cards-grid">
+        <!-- Card 1 -->
+        <div class="problem-card">
+          <div>
+            <div class="card-icon-wrap">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            </div>
+            <h3>The estimate depends on who writes it</h3>
+            <p>It is built in a spreadsheet under deadline, from memory. The firm&#39;s real evidence, how its past projects actually ran, sits scattered across old files and tools nobody has time to go through.</p>
+          </div>
+          <div class="cost-tag">
+            {svg_warning}
+            Margin lost at signing
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="problem-card">
+          <div>
+            <div class="card-icon-wrap">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+            </div>
+            <h3>Proposals wait days for a number</h3>
+            <p>A team, a timeline and a price have to be pieced together by hand before anything goes to the client. Meanwhile a faster firm has already replied.</p>
+          </div>
+          <div class="cost-tag">
+            {svg_warning}
+            Deals lost to slower proposals
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="problem-card">
+          <div>
+            <div class="card-icon-wrap">
+              {svg_clock}
+            </div>
+            <h3>Plans by hand, overruns found late</h3>
+            <p>The plan is built task by task after the deal is won. Overruns surface months later, when they can only be explained, not fixed.</p>
+          </div>
+          <div class="cost-tag">
+            {svg_warning}
+            Paying for late fixes
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       3. THE SHIFT SECTION
+       ========================================================================= -->
+  <section class="bg-dark-band" id="the-shift">
+    <div class="container shift-split">
+      <div class="shift-left">
+        <h2>One delivery history behind the estimate, the plan and the forecast.</h2>
+        <p>Foresprint puts the firm&#39;s own project history to work across the whole life of a project. Its agents find the past projects closest to a new one and estimate from how those projects really went, with the source shown behind every number. The estimate becomes the plan, and the plan is forecast against live data whenever someone asks. People review, change and approve every step.</p>
+      </div>
+
+      <div class="shift-right">
+        <div class="comparison-table-card">
+          <div class="comp-header">
+            <span>Dimension</span>
+            <span>Today</span>
+            <span>Foresprint</span>
+          </div>
+
+          <!-- Row 1 -->
+          <div class="comp-row">
+            <div class="comp-col-dim">Starting point</div>
+            <div class="comp-col-today">
+              <span class="cell-icon icon-cross">{svg_cross}</span>
+              <span>a blank spreadsheet and memory</span>
+            </div>
+            <div class="comp-col-foresprint">
+              <span class="cell-icon icon-check">{svg_check}</span>
+              <span>a ready estimate from the closest past projects</span>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="comp-row">
+            <div class="comp-col-dim">Proposal turnaround</div>
+            <div class="comp-col-today">
+              <span class="cell-icon icon-cross">{svg_cross}</span>
+              <span>days spent piecing a number together</span>
+            </div>
+            <div class="comp-col-foresprint">
+              <span class="cell-icon icon-check">{svg_check}</span>
+              <span>pre-sales starts from a ready estimate</span>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="comp-row">
+            <div class="comp-col-dim">Team structure</div>
+            <div class="comp-col-today">
+              <span class="cell-icon icon-cross">{svg_cross}</span>
+              <span>copied from the last deal that looked similar</span>
+            </div>
+            <div class="comp-col-foresprint">
+              <span class="cell-icon icon-check">{svg_check}</span>
+              <span>proposed role by role, with a confidence score</span>
+            </div>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="comp-row">
+            <div class="comp-col-dim">Project plan</div>
+            <div class="comp-col-today">
+              <span class="cell-icon icon-cross">{svg_cross}</span>
+              <span>built task by task after the deal is won</span>
+            </div>
+            <div class="comp-col-foresprint">
+              <span class="cell-icon icon-check">{svg_check}</span>
+              <span>generated straight from the estimate</span>
+            </div>
+          </div>
+
+          <!-- Row 5 -->
+          <div class="comp-row">
+            <div class="comp-col-dim">Project health</div>
+            <div class="comp-col-today">
+              <span class="cell-icon icon-cross">{svg_cross}</span>
+              <span>seen in the monthly review</span>
+            </div>
+            <div class="comp-col-foresprint">
+              <span class="cell-icon icon-check">{svg_check}</span>
+              <span>forecast on demand from live data</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       4. HOW FORESPRINT WORKS (Workflow with Synchronized Videos)
+       ========================================================================= -->
+  <section class="bg-surface" id="how-it-works">
+    <div class="container">
+      <div class="how-intro prose-760">
+        <h2>How Foresprint works, from first estimate to forecast finish</h2>
+        <p>The project is described once. Similar past projects are found, the estimate is built and reviewed, the full plan is generated from it, and the finish is forecast whenever it is needed.</p>
+      </div>
+
+      <div class="how-grid">
+        <!-- Left Column: Phase Bar + Clickable Step Buttons -->
+        <div class="how-rail" role="tablist" aria-label="Foresprint workflow steps">
+          <!-- Slim Grouping Bar for the 3 Workflow Stages -->
+          <div class="how-phase-bar" id="how-phase-bar">
+            <div class="how-phase-pill active" id="phase-pill-1" onclick="jumpToPhase(1)">
+              <span>Estimate</span>
+              <span class="phase-range">(Steps 1–3)</span>
+            </div>
+            <div class="how-phase-pill" id="phase-pill-2" onclick="jumpToPhase(2)">
+              <span>Plan</span>
+              <span class="phase-range">(Step 4)</span>
+            </div>
+            <div class="how-phase-pill" id="phase-pill-3" onclick="jumpToPhase(3)">
+              <span>Forecast</span>
+              <span class="phase-range">(Steps 5–6)</span>
+            </div>
+          </div>
+
+          <div class="how-rail-progress">
+            <div class="how-rail-progress-bar" id="how-progress-bar"></div>
+          </div>
+
+          <!-- Step 1 -->
+          <button type="button" class="how-step" role="tab" aria-selected="false" aria-expanded="false" data-step="1">
+            <div class="how-step-header">
+              <span class="step-badge">1</span>
+              <span class="step-title">Describe the project</span>
+              {svg_chevron}
+            </div>
+            <div class="how-step-body">
+              Enter the project name, type, client company, industry, technology, contract value and currency, with a short description of the work.
+            </div>
+          </button>
+
+          <!-- Step 2 -->
+          <button type="button" class="how-step" role="tab" aria-selected="false" aria-expanded="false" data-step="2">
+            <div class="how-step-header">
+              <span class="step-badge">2</span>
+              <span class="step-title">Similar past projects are found</span>
+              {svg_chevron}
+            </div>
+            <div class="how-step-body">
+              The project repository is searched for the closest matches. Each past project comes back with a match percentage, so the team can see how close the comparison really is.
+            </div>
+          </button>
+
+          <!-- Step 3 -->
+          <button type="button" class="how-step" role="tab" aria-selected="false" aria-expanded="false" data-step="3">
+            <div class="how-step-header">
+              <span class="step-badge">3</span>
+              <span class="step-title">The estimate is ready for the proposal</span>
+              {svg_chevron}
+            </div>
+            <div class="how-step-body">
+              Foresprint proposes the team role by role with a confidence score, a risk register, a suggested timeline and an estimated budget. Each one sits next to the past project it came from, and every item can be edited. Pre-sales reviews a ready project cost estimate instead of building one from scratch.
+            </div>
+          </button>
+
+          <!-- Step 4 -->
+          <button type="button" class="how-step" role="tab" aria-selected="false" aria-expanded="false" data-step="4">
+            <div class="how-step-header">
+              <span class="step-badge">4</span>
+              <span class="step-title">The plan is built from the estimate</span>
+              {svg_chevron}
+            </div>
+            <div class="how-step-body">
+              The reviewed estimate turns straight into a full task and milestone plan. Move the start date and every task date in the plan moves with it.
+            </div>
+          </button>
+
+          <!-- Step 5 -->
+          <button type="button" class="how-step" role="tab" aria-selected="false" aria-expanded="false" data-step="5">
+            <div class="how-step-header">
+              <span class="step-badge">5</span>
+              <span class="step-title">Actuals are compared with the baseline</span>
+              {svg_chevron}
+            </div>
+            <div class="how-step-body">
+              Once work begins, actual progress and cost sit next to the original baseline, so drift is visible task by task.
+            </div>
+          </button>
+
+          <!-- Step 6 -->
+          <button type="button" class="how-step" role="tab" aria-selected="false" aria-expanded="false" data-step="6">
+            <div class="how-step-header">
+              <span class="step-badge">6</span>
+              <span class="step-title">The finish is forecast on demand</span>
+              {svg_chevron}
+            </div>
+            <div class="how-step-body">
+              Ask for a forecast and Foresprint checks live data from the tools already in use against how similar projects finished. It returns the estimate at completion, cost overruns, rising risks and where people are over or under used.
+            </div>
+          </button>
+        </div>
+
+        <!-- Right Column: Video Preview Card -->
+        <div class="how-video-card">
+          <div class="how-video-topbar">
+            <div class="window-controls">
+              <span class="win-dot red"></span>
+              <span class="win-dot yellow"></span>
+              <span class="win-dot green"></span>
+            </div>
+            <div class="video-screen-name" id="active-screen-name">Create Project form filled in</div>
+            <div class="video-status">
+              <span class="video-dot"></span>
+              <span id="active-step-label">Step 1 of 6</span>
+            </div>
+          </div>
+          <div class="how-video-viewport">
+            <video src="step-1.mp4" class="is-active" muted loop playsinline autoplay preload="metadata"></video>
+            <video src="step-2.mp4" muted loop playsinline preload="metadata"></video>
+            <video src="step-3.mp4" muted loop playsinline preload="metadata"></video>
+            <video src="step-4.mp4" muted loop playsinline preload="metadata"></video>
+            <video src="step-5.mp4" muted loop playsinline preload="metadata"></video>
+            <video src="step-6.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="how-video-caption-bar">
+              <span class="video-caption-tag">Live Product Flow</span>
+              <span class="video-caption-text" id="active-caption-text">Step 1: Enter project parameters and scope</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       5. FASTER PROPOSALS, BACKED BY PAST PROJECTS
+       ========================================================================= -->
+  <section id="estimates-backed">
+    <div class="container">
+      <div class="backed-split">
+        <div class="backed-left">
+          <div class="product-preview-card">
+            <div class="preview-topbar">
+              <div class="window-controls">
+                <span class="win-dot red"></span>
+                <span class="win-dot yellow"></span>
+                <span class="win-dot green"></span>
+              </div>
+              <div class="preview-screen-title">Compare &amp; Edit &mdash; Matched Past Project</div>
+              <span class="example-data-tag">94% Match</span>
+            </div>
+            <div class="preview-media-viewport">
+              <img src="compare-edit-preview.jpg" alt="Foresprint comparing a new project estimate with a matched past project" class="product-hero-img">
+              <div class="avatar-caption-ticker">
+                <span class="avatar-caption-label">Source Citation Audit</span>
+                <span class="avatar-caption-text">Every number traced back to a project the firm has delivered.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="backed-right">
+          <h2>Proposals that go out faster, at a price the firm can defend</h2>
+          <p>The firm that replies first with a credible number often wins. Foresprint gives pre-sales a ready estimate built from the past projects closest to the new one, with the match shown behind every number. The team spends its time checking and adjusting, not piecing a price together, and the person signing off can see where each figure came from.</p>
+
+          <div style="margin-top:28px;">
+            <div class="proof-item">
+              <div class="proof-icon-box">{svg_check}</div>
+              <div class="proof-text">Pre-sales starts from a ready estimate, not a blank sheet</div>
+            </div>
+            <div class="proof-item">
+              <div class="proof-icon-box">{svg_check}</div>
+              <div class="proof-text">Every number traced back to a project the firm has delivered</div>
+            </div>
+            <div class="proof-item">
+              <div class="proof-icon-box">{svg_check}</div>
+              <div class="proof-text">Team, risks, timeline and budget editable before the proposal goes out</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slim comparison strip below -->
+      <div class="comp-strip">
+        <div class="strip-box strip-rule">
+          <div class="strip-title">Proposal built from scratch</div>
+          <p style="font-size:14px;">Days spent pulling a team, a timeline and a price together from memory. Hard to explain and hard to repeat.</p>
+        </div>
+        <div class="strip-box strip-foresprint">
+          <div class="strip-title">Proposal built on Foresprint</div>
+          <p style="font-size:14px; color:var(--heading);">Starts from a ready estimate based on the closest past projects. The same method for every proposal, with the source shown.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       6. BUILT FOR THREE TEAMS (Tabs)
+       ========================================================================= -->
+  <section class="bg-surface" id="two-teams">
+    <div class="container">
+      <div class="section-header text-center prose-760">
+        <h2>One history for the teams that price, plan and deliver projects</h2>
+      </div>
+
+      <!-- Tab Buttons (3 Teams) -->
+      <div class="teams-tab-nav" style="flex-wrap: wrap;">
+        <button class="team-tab-btn active" id="tab-btn-1" onclick="switchTeamTab(1)">Pre-sales and solution teams</button>
+        <button class="team-tab-btn" id="tab-btn-2" onclick="switchTeamTab(2)">Project and delivery teams</button>
+        <button class="team-tab-btn" id="tab-btn-3" onclick="switchTeamTab(3)">Delivery heads and leadership</button>
+      </div>
+
+      <!-- Tab 1 Pane -->
+      <div class="team-tab-pane active" id="tab-pane-1">
+        <div class="tab-content-grid">
+          <div>
+            <h3>Software project estimation for pre-sales and bid teams</h3>
+            <p>When several proposals are due in the same week, each one still needs a team, a timeline and a price. Foresprint gives every proposal a ready estimate from the closest past projects, so pre-sales closes proposals faster at a price it can defend. Risks are listed before the number is agreed.</p>
+          </div>
+          <div>
+            <ul class="outcome-bullets">
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>Proposals out faster, starting from a ready estimate</span>
+              </li>
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>One estimating standard across every bid and every estimator</span>
+              </li>
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>Risks listed before the price is fixed</span>
+              </li>
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>A clear source behind every number in the quote</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tab-screenshot-strip">
+          <img src="presales-preview.jpg" alt="Pre-sales proposal calibration" class="tab-preview-img">
+          <div class="tab-screenshot-footer">
+            <div>
+              <div style="font-size:14px; font-weight:600; color:var(--heading);">Pre-Sales Proposal Workspace</div>
+              <div style="font-size:12px; color:var(--muted);">Estimating from the firm&#39;s closest past projects</div>
+            </div>
+            <span class="example-data-tag">Pre-Sales Cockpit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2 Pane -->
+      <div class="team-tab-pane" id="tab-pane-2">
+        <div class="tab-content-grid">
+          <div>
+            <h3>Project planning that starts from the estimate</h3>
+            <p>Once the deal is won, the delivery team does not start over. The approved estimate turns straight into a full task and milestone plan, built on how similar projects really ran. When the start date moves, the whole plan moves with it.</p>
+          </div>
+          <div>
+            <ul class="outcome-bullets">
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>A full plan ready on day one, not built by hand</span>
+              </li>
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>Team and timeline that match what was sold</span>
+              </li>
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>Every task date updated when the start date changes</span>
+              </li>
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>Actuals tracked against the baseline from the start</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tab-screenshot-strip">
+          <img src="dashboard-preview.jpg" alt="Project planning and baseline tracking" class="tab-preview-img">
+          <div class="tab-screenshot-footer">
+            <div>
+              <div style="font-size:14px; font-weight:600; color:var(--heading);">Delivery Planning &amp; Baseline Synchronization</div>
+              <div style="font-size:12px; color:var(--muted);">Approved estimate generated directly into a full task and milestone plan</div>
+            </div>
+            <span class="example-data-tag">Delivery View</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3 Pane -->
+      <div class="team-tab-pane" id="tab-pane-3">
+        <div class="tab-content-grid">
+          <div>
+            <h3>Project forecasting for delivery heads and leadership</h3>
+            <p>A signed project rarely runs exactly to plan. Whenever a forecast is asked for, on a new project or one already running, Foresprint checks the latest data against how similar projects finished. Cost overruns, rising risks and underused people show up while there is still time to act.</p>
+          </div>
+          <div>
+            <ul class="outcome-bullets">
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>Estimate at completion whenever it is needed</span>
+              </li>
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>Cost overrun and risk alerts before the monthly review</span>
+              </li>
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>Suggestions on where people are over or under used</span>
+              </li>
+              <li class="outcome-bullet">
+                <span class="bullet-icon">{svg_check}</span>
+                <span>Forecasts for running projects as well as new ones</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tab-screenshot-strip">
+          <img src="pmo-delivery-preview.jpg" alt="Continuous health radar and forecast" class="tab-preview-img">
+          <div class="tab-screenshot-footer">
+            <div>
+              <div style="font-size:14px; font-weight:600; color:var(--heading);">Leadership Health &amp; Forecast Radar</div>
+              <div style="font-size:12px; color:var(--muted);">Estimate at completion and proactive cost drift alerts</div>
+            </div>
+            <span class="example-data-tag">Leadership Console</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       7. THE PLAN FOLLOWS THE DATE (Interactive Gantt Block)
+       ========================================================================= -->
+  <section class="bg-dark-band" id="plan-follows-date">
+    <div class="container">
+      <div class="section-header">
+        <h2>AI project planning that keeps up when dates move</h2>
+        <p class="prose-760">Deals slip and kick-offs move. In Foresprint, changing the start date moves every task and milestone in the plan, so delivery keeps a plan it can trust instead of rebuilding one.</p>
+      </div>
+
+      <div class="gantt-widget">
+        <div class="gantt-split">
+          <!-- Left Controls -->
+          <div class="gantt-controls">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:13px; font-weight:700; color:var(--heading); text-transform:uppercase;">Try it: move the start date</span>
+            </div>
+            
+            <label for="gantt-date-picker" style="font-size:12px; color:var(--muted); display:block; margin-top:12px;">Select Project Kick-off Date:</label>
+            <input type="date" id="gantt-date-picker" class="gantt-date-input" value="2026-11-16" onchange="updateGanttDates()">
+
+            <div style="font-size:11px; color:var(--muted); margin-bottom:6px; font-weight:600; text-transform:uppercase;">Quick Presets</div>
+            <div class="quick-preset-btns">
+              <button class="preset-btn" onclick="shiftStartDate(7)">+1 Week</button>
+              <button class="preset-btn" onclick="shiftStartDate(14)">+2 Weeks</button>
+              <button class="preset-btn" onclick="shiftStartDate(30)">+1 Month</button>
+              <button class="preset-btn" onclick="resetStartDate()">Reset</button>
+            </div>
+
+            <div class="gantt-calc-summary">
+              <div class="summary-row">
+                <span>Kick-off Date:</span>
+                <strong id="summary-kickoff">Nov 16, 2026</strong>
+              </div>
+              <div class="summary-row">
+                <span>Calculated Finish:</span>
+                <strong id="summary-finish" style="color:var(--brand-light);">Apr 19, 2027</strong>
+              </div>
+              <div class="summary-row">
+                <span>Total Timeline:</span>
+                <strong>22 Weeks</strong>
+              </div>
+              <div class="summary-row">
+                <span>Recalculated Tasks:</span>
+                <strong style="color:var(--accent-green);">48 Tasks Synced</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Gantt Chart -->
+          <div class="gantt-view">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <span style="font-size:12px; color:var(--muted); font-weight:600;">Gantt Milestone Schedule</span>
+              <span class="example-data-tag">Example data</span>
+            </div>
+
+            <div class="gantt-timeline-header">
+              <span>Milestone</span>
+              <span>W1</span><span>W3</span><span>W5</span><span>W7</span><span>W9</span><span>W11</span>
+              <span>W13</span><span>W15</span><span>W17</span><span>W19</span><span>W21</span><span>W23</span>
+            </div>
+
+            <!-- Milestone 1 -->
+            <div class="gantt-row">
+              <span class="gantt-task-name" title="Discovery &amp; Architecture">1. Discovery &amp; Architecture</span>
+              <div class="gantt-track">
+                <div class="gantt-bar" id="bar-1" style="left: 0%; width: 14%;">2 Wks</div>
+              </div>
+            </div>
+
+            <!-- Milestone 2 -->
+            <div class="gantt-row">
+              <span class="gantt-task-name" title="Cloud Foundations &amp; Security">2. Cloud Infrastructure &amp; VPC</span>
+              <div class="gantt-track">
+                <div class="gantt-bar" id="bar-2" style="left: 14%; width: 18%;">3 Wks</div>
+              </div>
+            </div>
+
+            <!-- Milestone 3 -->
+            <div class="gantt-row">
+              <span class="gantt-task-name" title="Core Backend APIs">3. Core Backend APIs</span>
+              <div class="gantt-track">
+                <div class="gantt-bar" id="bar-3" style="left: 28%; width: 34%;">8 Wks</div>
+              </div>
+            </div>
+
+            <!-- Milestone 4 -->
+            <div class="gantt-row">
+              <span class="gantt-task-name" title="Client Integration &amp; Auth">4. Integration &amp; Middleware</span>
+              <div class="gantt-track">
+                <div class="gantt-bar" id="bar-4" style="left: 48%; width: 24%;">5 Wks</div>
+              </div>
+            </div>
+
+            <!-- Milestone 5 -->
+            <div class="gantt-row">
+              <span class="gantt-task-name" title="Penetration &amp; Load Testing">5. Performance &amp; Security Testing</span>
+              <div class="gantt-track">
+                <div class="gantt-bar" id="bar-5" style="left: 68%; width: 18%;">4 Wks</div>
+              </div>
+            </div>
+
+            <!-- Milestone 6 -->
+            <div class="gantt-row">
+              <span class="gantt-task-name" title="UAT &amp; Production Cutover">6. UAT &amp; Production Launch</span>
+              <div class="gantt-track">
+                <div class="gantt-bar" id="bar-6" style="left: 82%; width: 16%;">2 Wks</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       8. FORECAST ON DEMAND SECTION (Screenshot Product View)
+       ========================================================================= -->
+  <section class="forecast-section" id="forecast-on-demand">
+    <div class="container forecast-split">
+      <div class="forecast-left">
+        <h2>Project forecasting whenever it is needed</h2>
+        <p>Foresprint does not wait for a status report. When a forecast is asked for, it checks live data from the tools already in use against how similar past projects finished.</p>
+        <p>The answer shows where the project stands that day: the estimate at completion, where cost is heading over budget, which risks are rising and where people are over or under used. Leaders see the finish early, while there is still time to change it.</p>
+        <button class="req-forecast-btn" onclick="alert('Simulation updated: EAC $348,200 (+4.2%) recalibrated from live delivery telemetry.');">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          Request Forecast Now
+        </button>
+      </div>
+
+      <div class="forecast-right">
+        <div class="product-preview-card">
+          <div class="preview-topbar">
+            <div class="window-controls">
+              <span class="win-dot red"></span>
+              <span class="win-dot yellow"></span>
+              <span class="win-dot green"></span>
+            </div>
+            <div class="preview-screen-title">AI Forecast on Demand &mdash; Projected Finish</div>
+            <span class="example-data-tag">Example data</span>
+          </div>
+
+          <div class="preview-media-viewport">
+            <img src="forecast-preview.jpg" alt="Project forecasting whenever it is needed" class="product-hero-img">
+            <div class="avatar-caption-ticker">
+              <span class="avatar-caption-label">Estimate at Completion (EAC)</span>
+              <span class="avatar-caption-text">Projected: $348,200 (+4.2%) &middot; Finish: Dec 14 &middot; 91% Confidence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       9. WORKS WITH THE SYSTEMS YOU ALREADY USE
+       ========================================================================= -->
+  <section class="bg-surface" id="integrations">
+    <div class="container">
+      <div class="section-header text-center prose-760">
+        <h2>Works with the systems you already use</h2>
+        <p>Foresprint does not replace project tools or the people running them. Project tools keep running tasks, updates and day-to-day tracking. Foresprint reads from them to estimate, plan and forecast, and people approve every step. Nothing gets replaced and nothing gets migrated.</p>
+      </div>
+
+      <div class="integration-diagram">
+        <!-- Top Block: Foresprint -->
+        <div class="diagram-top-block">
+          <div class="eyebrow" style="margin-bottom:8px;">AIQoD Agent Engine</div>
+          <div class="diagram-top-title">Foresprint: estimates, plans and forecasts</div>
+          <p class="diagram-top-desc">Reads project history and live data &middot; People approve every estimate and plan</p>
+        </div>
+
+        <!-- Connector -->
+        <div class="connector-flow">
+          <span class="pulse-connector"></span>
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+
+        <!-- Bottom Block: Existing tools (Categories, not named vendor tools per Excel instructions) -->
+        <div class="diagram-bottom-block">
+          <div class="diagram-bottom-title">Your current project and delivery tools: tasks, updates and tracking stay where they are</div>
+          <div class="tools-pill-grid">
+            <span class="tool-pill">Task &amp; Issue Trackers</span>
+            <span class="tool-pill">Delivery Systems</span>
+            <span class="tool-pill">Project Portfolios</span>
+            <span class="tool-pill">Time &amp; Resource Logs</span>
+            <span class="tool-pill">Code &amp; Sprint Repositories</span>
+            <span class="tool-pill">Milestone Trackers</span>
+          </div>
+        </div>
+
+        <div class="diagram-caption">Added on top. Nothing replaced.</div>
+        <div class="integration-link-wrap">
+          <a href="/platform" class="text-link">How the integration layer works &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       10. PROJECT HEALTH REPORTING (Wide Dashboard Panel + Metrics)
+       ========================================================================= -->
+  <section class="health-section" id="reporting">
+    <div class="container">
+      <div class="section-header">
+        <h2>Cost, risk and people in one view</h2>
+        <p class="prose-760">Alongside the plan, Foresprint shows actuals against the baseline, the forecast estimate at completion, cost overrun and risk alerts, and resource utilization insights with suggestions on where to rebalance the team.</p>
+      </div>
+
+      <!-- Wide Dashboard Image Panel -->
+      <div class="dashboard-image-panel">
+        <div class="preview-topbar">
+          <div class="window-controls">
+            <span class="win-dot red"></span>
+            <span class="win-dot yellow"></span>
+            <span class="win-dot green"></span>
+          </div>
+          <div class="preview-screen-title">Project actuals, forecast and alerts dashboard</div>
+          <span class="example-data-tag">Example data</span>
+        </div>
+        <img src="dashboard-preview.jpg" alt="Project actuals, forecast and alerts dashboard (example data)">
+      </div>
+
+      <!-- 4 Dashboard Metric Highlights -->
+      <div class="dashboard-metrics-strip">
+        <div class="metric-panel-card">
+          <div class="metric-panel-title">Actuals vs Baseline</div>
+          <div class="metric-panel-val">$218,400</div>
+          <div class="metric-panel-desc">Planned: $204k (+7.0% variance &middot; -4.2d)</div>
+        </div>
+        <div class="metric-panel-card">
+          <div class="metric-panel-title">Estimate at Completion</div>
+          <div class="metric-panel-val" style="color:var(--brand-light);">$348,200</div>
+          <div class="metric-panel-desc">Target: $334,000 (+4.2% EAC variance)</div>
+        </div>
+        <div class="metric-panel-card">
+          <div class="metric-panel-title">Cost Overrun Alerts</div>
+          <div class="metric-panel-val" style="color:#F59E0B;">2 Active</div>
+          <div class="metric-panel-desc">Cloud egress spend &middot; Banking SLA latency</div>
+        </div>
+        <div class="metric-panel-card">
+          <div class="metric-panel-title">Resource Utilization</div>
+          <div class="metric-panel-val" style="color:var(--accent-green);">88% Optimal</div>
+          <div class="metric-panel-desc">Rebalance suggestion for Sprint 3 staged</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       11. CONFIGURED TO HOW YOU DELIVER
+       ========================================================================= -->
+  <section class="bg-surface" id="configured">
+    <div class="container">
+      <div class="section-header text-center prose-760">
+        <h2>Configured to how you deliver</h2>
+      </div>
+
+      <div class="config-cards-grid">
+        <!-- Card 1: Fixed estimation tools -->
+        <div class="config-card config-card-muted">
+          <h3>Fixed estimation tools</h3>
+          <p>Most estimation tools work from generic formulas. The inputs are fixed, the model is fixed, and the result has little to do with how your own teams actually deliver.</p>
+          <ul style="list-style:none; margin-top:16px; display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--muted);">
+            <li style="display:flex; align-items:center; gap:8px;"><span style="color:#EF4444;">{svg_cross}</span> Generic industry parametric averages</li>
+            <li style="display:flex; align-items:center; gap:8px;"><span style="color:#EF4444;">{svg_cross}</span> Blind to client delivery history and team velocity</li>
+            <li style="display:flex; align-items:center; gap:8px;"><span style="color:#EF4444;">{svg_cross}</span> Static templates that quickly become obsolete</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Foresprint -->
+        <div class="config-card config-card-brand">
+          <div class="eyebrow" style="margin-bottom:8px;">Custom Built</div>
+          <h3>Foresprint</h3>
+          <p>Estimates come from your own delivery history. Which project details are compared, which risks are tracked, how the plan is laid out and what the forecast shows are all set to how your firm works. When the way you deliver changes, the configuration changes with it.</p>
+          <ul style="list-style:none; margin-top:16px; display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--heading);">
+            <li style="display:flex; align-items:center; gap:8px;"><span style="color:var(--accent-green);">{svg_check}</span> Calibrated directly from your past delivery record</li>
+            <li style="display:flex; align-items:center; gap:8px;"><span style="color:var(--accent-green);">{svg_check}</span> Tailored role definitions, rate cards, and risk registers</li>
+            <li style="display:flex; align-items:center; gap:8px;"><span style="color:var(--accent-green);">{svg_check}</span> Adaptive agents that refine forecasts as projects progress</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Time to value strip -->
+      <div class="time-to-value-strip">
+        First configuration live in a day. First measurable ROI in three to six weeks.
+      </div>
+      <div class="qualifier-note">
+        Outcome ranges are representative and validated per engagement.
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       12. WHAT IS INCLUDED (8 Tiles grouped by Estimate, Plan, Forecast)
+       ========================================================================= -->
+  <section class="included-section" id="included">
+    <div class="container">
+      <div class="section-header">
+        <h2>What is included in Foresprint</h2>
+      </div>
+
+      <div class="included-grid">
+        <!-- Group 1: Estimate -->
+        <div class="included-phase-header">
+          <span class="included-phase-title">Estimate</span>
+          <div class="included-phase-line"></div>
+        </div>
+
+        <!-- 1. Project intake -->
+        <div class="included-tile">
+          <div class="included-icon-box">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+          </div>
+          <div class="included-heading">Project intake</div>
+          <div class="included-desc">Name, type, client, industry, technology, contract value and currency captured once</div>
+        </div>
+
+        <!-- 2. Similar project search -->
+        <div class="included-tile">
+          <div class="included-icon-box">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+          <div class="included-heading">Similar project search</div>
+          <div class="included-desc">Past projects ranked by match percentage against the new one</div>
+        </div>
+
+        <!-- 3. Team structure -->
+        <div class="included-tile">
+          <div class="included-icon-box">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+          </div>
+          <div class="included-heading">Team structure</div>
+          <div class="included-desc">Role-by-role team proposal with a confidence score on each role</div>
+        </div>
+
+        <!-- 4. Risk register -->
+        <div class="included-tile">
+          <div class="included-icon-box">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+          </div>
+          <div class="included-heading">Risk register</div>
+          <div class="included-desc">Risks proposed from past projects, fully editable</div>
+        </div>
+
+        <!-- Group 2: Plan -->
+        <div class="included-phase-header">
+          <span class="included-phase-title">Plan</span>
+          <div class="included-phase-line"></div>
+        </div>
+
+        <!-- 5. Timeline and budget -->
+        <div class="included-tile">
+          <div class="included-icon-box">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+          <div class="included-heading">Timeline and budget</div>
+          <div class="included-desc">Suggested timeline and estimated budget, each tied to the matched project</div>
+        </div>
+
+        <!-- 6. Project plan -->
+        <div class="included-tile">
+          <div class="included-icon-box">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+          </div>
+          <div class="included-heading">Project plan</div>
+          <div class="included-desc">Full task and milestone plan built from the estimate, moving with the start date</div>
+        </div>
+
+        <!-- Group 3: Forecast -->
+        <div class="included-phase-header">
+          <span class="included-phase-title">Forecast</span>
+          <div class="included-phase-line"></div>
+        </div>
+
+        <!-- 7. Actuals and baselines -->
+        <div class="included-tile">
+          <div class="included-icon-box">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          </div>
+          <div class="included-heading">Actuals and baselines</div>
+          <div class="included-desc">Live progress and cost compared with the original baseline</div>
+        </div>
+
+        <!-- 8. Forecast and alerts -->
+        <div class="included-tile">
+          <div class="included-icon-box">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <div class="included-heading">Forecast and alerts</div>
+          <div class="included-desc">Estimate at completion, cost overrun and risk alerts, resource utilization suggestions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       13. FAQ SECTION (Accordion)
+       ========================================================================= -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header text-center prose-760">
+        <h2>Frequently asked questions</h2>
+      </div>
+
+      <div class="faq-container">
+        <!-- FAQ 1 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>What is project estimation software?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Project estimation software works out the team, timeline, budget and risks a project will need before it starts. Foresprint is an agentic project estimation, planning and forecasting solution built on the AIQoD platform. Its agents build each estimate from the past projects closest to the new one, and people review and approve every estimate.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is Foresprint a project management tool?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>No. Foresprint does not run or manage projects, and it does not replace the people who do. It estimates, plans and forecasts, for new projects and for projects already running. Your project management tools keep doing the day-to-day tracking.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>How does Foresprint help close proposals faster?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Pre-sales starts from a ready estimate instead of a blank sheet. The team, timeline, budget and risks are proposed from the closest past projects, so the proposal team checks and adjusts rather than building the number by hand.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Where do the estimates come from?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>From your own project history. Foresprint searches past projects for the closest matches and shows each match with a percentage. The proposed team, risks, timeline and budget are each shown next to the past project they came from.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 5 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can Foresprint help with fixed price project estimation?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. Pre-sales and bid teams use it to estimate proposals from real delivery history, with risks listed before the price is fixed and a clear source behind every number in the quote.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 6 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Does Foresprint work with our existing project tools?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. It works with the systems you already use and reads project data from them. Tasks, updates and tracking stay where they are. Nothing is replaced or migrated.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 7 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>How does project forecasting work in Foresprint?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Forecasts are on demand. When a forecast is requested, Foresprint checks live data from your project tools against how similar past projects finished. It returns the estimate at completion, cost overrun and risk alerts, and resource utilization suggestions.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 8 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Does Foresprint calculate estimate at completion (EAC)?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. Every forecast includes the estimate at completion, based on current progress and how similar past projects performed.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 9 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>How does AI project planning work in Foresprint?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>The reviewed estimate turns straight into a full task and milestone plan. When the start date changes, every task and milestone date moves with it, so the plan does not need to be rebuilt.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 10 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can Foresprint be used on a project that is already running?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. It works for new projects and existing ones. For a running project it compares actuals with the baseline and forecasts the finish.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 11 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can the team change what Foresprint suggests?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. The proposed team, risk register, timeline and budget can all be edited before the plan is built. People make every final call.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 12 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Does Foresprint warn about cost overruns?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. Each forecast flags where cost is heading over budget and which risks are rising, along with suggestions on where people are over or under used.</p>
+          </div>
+        </details>
+
+        <!-- FAQ 13 -->
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>How long does it take to go live?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>The first configuration goes live in a day, with measurable results typically inside three to six weeks.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       14. FINAL CTA
+       ========================================================================= -->
+  <section class="closing-band" id="contact">
+    <div class="container prose-680">
+      <h2>See Foresprint estimate, plan and forecast a real project</h2>
+      <p class="closing-line">Bring a project you are pricing now. In twenty minutes, see Foresprint find similar past projects, build the estimate and turn it into a full plan.</p>
+      <div class="closing-buttons">
+        <a href="#contact" class="btn btn-contrast-solid">Book a demo</a>
+        <a href="/contact-us" class="btn btn-contrast-outline">Contact us</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =======================================================================
+       CLIENT-SIDE JAVASCRIPT
+       ========================================================================= -->
+  <script>
+    // 1. Workflow Clickable Steps (Accordion) & Synchronized Video Switcher
+    (function() {{
+      var stepButtons = document.querySelectorAll('.how-step');
+      var videos = document.querySelectorAll('.how-video-viewport video');
+      var activeStepLabel = document.getElementById('active-step-label');
+      var activeScreenName = document.getElementById('active-screen-name');
+      var activeCaptionText = document.getElementById('active-caption-text');
+      var progressBar = document.getElementById('how-progress-bar');
+
+      var stepScreenNames = [
+        "Create Project form filled in",
+        "Find Similar Projects results with the match % column",
+        "Compare and Edit AI Recommendations screen showing the resource structure",
+        "Project Plan screen with milestones expanded",
+        "Project Actuals and Baselines view",
+        "AI Forecast and Estimates view with alerts"
+      ];
+
+      var stepCaptions = [
+        "Step 1: Enter name, type, client, industry, tech stack, contract value and currency",
+        "Step 2: Repository matches ranked by percentage proximity to past deliveries",
+        "Step 3: Role-by-role team proposal with confidence scores and source citations",
+        "Step 4: Recalculates whole project plan whenever start date or scope adjusts",
+        "Step 5: Real-time telemetry monitoring cost drift and timeline slippage",
+        "Step 6: On-demand AI forecast generating estimate at completion and risk alerts"
+      ];
+
+      function syncPhaseBar(idx) {{
+        var p1 = document.getElementById('phase-pill-1');
+        var p2 = document.getElementById('phase-pill-2');
+        var p3 = document.getElementById('phase-pill-3');
+        if (!p1 || !p2 || !p3) return;
+        p1.classList.remove('active');
+        p2.classList.remove('active');
+        p3.classList.remove('active');
+        if (idx < 3) {{
+          p1.classList.add('active');
+        }} else if (idx === 3) {{
+          p2.classList.add('active');
+        }} else {{
+          p3.classList.add('active');
+        }}
+      }}
+
+      window.jumpToPhase = function(phase) {{
+        if (phase === 1) activateStep(0, false);
+        else if (phase === 2) activateStep(3, false);
+        else if (phase === 3) activateStep(4, false);
+      }};
+
+      function activateStep(idx, allowToggle) {{
+        var isCurrentlyExpanded = stepButtons[idx].getAttribute('aria-expanded') === 'true';
+
+        stepButtons.forEach(function(btn, bIdx) {{
+          if (bIdx === idx) {{
+            if (isCurrentlyExpanded && allowToggle) {{
+              btn.setAttribute('aria-expanded', 'false');
+              btn.setAttribute('aria-selected', 'false');
+            }} else {{
+              btn.setAttribute('aria-expanded', 'true');
+              btn.setAttribute('aria-selected', 'true');
+            }}
+          }} else {{
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-selected', 'false');
+          }}
+        }});
+
+        var isNowExpanded = stepButtons[idx].getAttribute('aria-expanded') === 'true';
+        syncPhaseBar(idx);
+
+        videos.forEach(function(vid, vIdx) {{
+          if (vIdx === idx) {{
+            vid.classList.add('is-active');
+            try {{
+              vid.currentTime = 0;
+              vid.play().catch(function() {{}});
+            }} catch(e) {{}}
+          }} else {{
+            vid.classList.remove('is-active');
+            try {{ vid.pause(); }} catch(e) {{}}
+          }}
+        }});
+
+        if (progressBar) {{
+          var pct = isNowExpanded ? (((idx + 1) / stepButtons.length) * 100) : 0;
+          progressBar.style.height = pct + '%';
+        }}
+
+        if (activeStepLabel) {{
+          activeStepLabel.textContent = "Step " + (idx + 1) + " of " + stepButtons.length;
+        }}
+        if (activeScreenName && stepScreenNames[idx]) {{
+          activeScreenName.textContent = stepScreenNames[idx];
+        }}
+        if (activeCaptionText && stepCaptions[idx]) {{
+          activeCaptionText.textContent = stepCaptions[idx];
+        }}
+      }}
+
+      stepButtons.forEach(function(btn, idx) {{
+        btn.addEventListener('click', function() {{
+          activateStep(idx, true);
+        }});
+      }});
+    }})();
+
+    // 2. Built for Three Teams Tab Switcher
+    function switchTeamTab(tabIndex) {{
+      for (var i = 1; i <= 3; i++) {{
+        var btn = document.getElementById('tab-btn-' + i);
+        var pane = document.getElementById('tab-pane-' + i);
+        if (btn) {{
+          if (i === tabIndex) {{
+            btn.classList.add('active');
+          }} else {{
+            btn.classList.remove('active');
+          }}
+        }}
+        if (pane) {{
+          if (i === tabIndex) {{
+            pane.classList.add('active');
+          }} else {{
+            pane.classList.remove('active');
+          }}
+        }}
+      }}
+    }}
+
+    // 3. Interactive Gantt Schedule Recalculation
+    var initialDate = new Date('2026-11-16');
+
+    function formatDate(dateObj) {{
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      return months[dateObj.getMonth()] + ' ' + dateObj.getDate() + ', ' + dateObj.getFullYear();
+    }}
+
+    function updateGanttDates() {{
+      var picker = document.getElementById('gantt-date-picker');
+      if (!picker || !picker.value) return;
+      var cur = new Date(picker.value);
+      if (isNaN(cur.getTime())) return;
+
+      var startEl = document.getElementById('summary-kickoff');
+      if (startEl) startEl.textContent = formatDate(cur);
+
+      var finishDate = new Date(cur.getTime() + (154 * 24 * 60 * 60 * 1000));
+      var finishEl = document.getElementById('summary-finish');
+      if (finishEl) finishEl.textContent = formatDate(finishDate);
+
+      var bars = document.querySelectorAll('.gantt-bar');
+      bars.forEach(function(bar) {{
+        bar.style.transform = 'scaleY(1.15)';
+        setTimeout(function() {{
+          bar.style.transform = 'scaleY(1)';
+        }}, 250);
+      }});
+    }}
+
+    function shiftStartDate(days) {{
+      var picker = document.getElementById('gantt-date-picker');
+      if (!picker) return;
+      var cur = new Date(picker.value || '2026-11-16');
+      cur.setDate(cur.getDate() + days);
+      var yyyy = cur.getFullYear();
+      var mm = String(cur.getMonth() + 1).padStart(2, '0');
+      var dd = String(cur.getDate()).padStart(2, '0');
+      picker.value = yyyy + '-' + mm + '-' + dd;
+      updateGanttDates();
+    }}
+
+    function resetStartDate() {{
+      var picker = document.getElementById('gantt-date-picker');
+      if (picker) {{
+        picker.value = '2026-11-16';
+        updateGanttDates();
+      }}
+    }}
+  </script>
+</body>
+</html>
+'''
+
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write(html)
+    print("index.html successfully updated! Total length: " + str(len(html)) + " characters.")
+
+if __name__ == '__main__':
+    generate_html()

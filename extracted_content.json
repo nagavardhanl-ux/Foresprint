@@ -1,0 +1,1258 @@
+[
+  {
+    "row": 1,
+    "vals": [
+      "Section",
+      "Element",
+      "Content",
+      "Layout / Design"
+    ]
+  },
+  {
+    "row": 2,
+    "vals": [
+      "SEO SETUP",
+      "",
+      "",
+      "Goes into page settings, not visible on the page"
+    ]
+  },
+  {
+    "row": 3,
+    "vals": [
+      "SEO SETUP",
+      "URL",
+      "aiqod.com/foresprint"
+    ]
+  },
+  {
+    "row": 4,
+    "vals": [
+      "SEO SETUP",
+      "Title tag",
+      "Foresprint by AIQoD | AI Project Estimation and Forecasting"
+    ]
+  },
+  {
+    "row": 5,
+    "vals": [
+      "SEO SETUP",
+      "Meta description",
+      "Foresprint by AIQoD estimates the team, timeline, budget and risks for a new project from your past projects, then forecasts live projects on demand."
+    ]
+  },
+  {
+    "row": 6,
+    "vals": [
+      "SEO SETUP",
+      "OG title",
+      "Foresprint by AIQoD | Know the timeline before the project starts"
+    ]
+  },
+  {
+    "row": 7,
+    "vals": [
+      "SEO SETUP",
+      "OG description",
+      "AI project estimation built from your own delivery history. Team, timeline, budget, risks and a full project plan before work starts, and a forecast whenever it is needed."
+    ]
+  },
+  {
+    "row": 8,
+    "vals": [
+      "SEO SETUP",
+      "Primary keyword",
+      "AI project estimation software"
+    ]
+  },
+  {
+    "row": 9,
+    "vals": [
+      "SEO SETUP",
+      "Secondary keywords",
+      "project estimation software · project forecasting software · AI project planning · estimate at completion (EAC) · project cost estimation"
+    ]
+  },
+  {
+    "row": 10,
+    "vals": [
+      "SEO SETUP",
+      "Supporting keywords",
+      "software project estimation · fixed price project estimation · resource forecasting · project risk register · project plan generator · cost overrun · resource utilization"
+    ]
+  },
+  {
+    "row": 11,
+    "vals": [
+      "SEO SETUP",
+      "Keyword volumes",
+      "Search volumes and difficulty still to be pulled. OpenSEO credits ran out during research, so add the numbers here once credits are topped up and swap any term that turns out to have no demand."
+    ]
+  },
+  {
+    "row": 12,
+    "vals": [
+      "SEO SETUP",
+      "Where keywords sit",
+      "AI project estimation: title, hero subline, FAQ 1. Project forecasting / estimate at completion: Section 8 H2, Section 6 Tab 2 and FAQ 6 and 7. Project planning / project plan generator: Section 4 step 4 and Section 7. Fixed price project estimation: Section 6 Tab 1 and FAQ 8. Cost overrun and resource utilization: Section 10 and FAQ 11."
+    ]
+  },
+  {
+    "row": 13,
+    "vals": [
+      "SEO SETUP",
+      "Positioning guard",
+      "Foresprint plans, estimates and forecasts. It does not manage projects. The page never calls it project management software, and FAQ 2 says so plainly. Do not target \"project management software\" as a keyword."
+    ]
+  },
+  {
+    "row": 14,
+    "vals": [
+      "SEO SETUP",
+      "Internal links from this page",
+      "Section 9 'How the integration layer works' to /platform. Final CTA to /contact-us. Do not repeat homepage metric strips here."
+    ]
+  },
+  {
+    "row": 15,
+    "vals": [
+      "SEO SETUP",
+      "Schema",
+      "SoftwareApplication (name: Foresprint, brand: AIQoD, applicationCategory: BusinessApplication, operatingSystem: Web, url: aiqod.com/foresprint, description = meta description) plus FAQPage built from Section 13 word for word."
+    ]
+  },
+  {
+    "row": 16,
+    "vals": [
+      "1. HERO",
+      "",
+      "",
+      "Split hero. Copy on the left. On the right an animated timeline chart (example data): a solid 'Plan' line, an 'Actuals' line that starts drifting away from it, and a dotted 'Foresprint forecast' line that runs ahead to the projected finish with a small flag on the end date. Label the chart as example data."
+    ]
+  },
+  {
+    "row": 17,
+    "vals": [
+      "1. HERO",
+      "Eyebrow",
+      "Foresprint by AIQoD"
+    ]
+  },
+  {
+    "row": 18,
+    "vals": [
+      "1. HERO",
+      "H1",
+      "Know the timeline before the project starts"
+    ]
+  },
+  {
+    "row": 19,
+    "vals": [
+      "1. HERO",
+      "Subline",
+      "Foresprint is AI project estimation for IT and software services firms. It finds the past projects most like the new one and builds the team, timeline, budget, risks and full project plan from how those projects actually ran. Once work starts, it forecasts the finish whenever it is asked."
+    ]
+  },
+  {
+    "row": 20,
+    "vals": [
+      "1. HERO",
+      "Primary CTA",
+      "Book a demo"
+    ]
+  },
+  {
+    "row": 21,
+    "vals": [
+      "1. HERO",
+      "Secondary CTA",
+      "Talk to our team"
+    ]
+  },
+  {
+    "row": 22,
+    "vals": [
+      "1. HERO",
+      "Trust line",
+      "Live today on the AIQoD platform."
+    ]
+  },
+  {
+    "row": 23,
+    "vals": [
+      "2. THE PROBLEM",
+      "",
+      "",
+      "Full-width H2 and one intro line. Below, three cards in a row, each with an icon and a small tag at the bottom showing what it costs."
+    ]
+  },
+  {
+    "row": 24,
+    "vals": [
+      "2. THE PROBLEM",
+      "H2",
+      "Most project estimates start from memory, not from past projects."
+    ]
+  },
+  {
+    "row": 25,
+    "vals": [
+      "2. THE PROBLEM",
+      "Intro",
+      "A new deal needs a team, a timeline and a price within days. The estimate is built in a spreadsheet by whoever is free, based on what they remember. Records of how similar projects actually ran sit in old files nobody opens. The gaps show up months later, once the work is underway."
+    ]
+  },
+  {
+    "row": 26,
+    "vals": [
+      "2. THE PROBLEM",
+      "Card 1 - Heading",
+      "Estimates depend on who writes them"
+    ]
+  },
+  {
+    "row": 27,
+    "vals": [
+      "2. THE PROBLEM",
+      "Card 1 - Content",
+      "Two people pricing the same project come back with two different numbers, and neither can show where theirs came from."
+    ]
+  },
+  {
+    "row": 28,
+    "vals": [
+      "2. THE PROBLEM",
+      "Card 1 - Tag",
+      "Inconsistent quotes"
+    ]
+  },
+  {
+    "row": 29,
+    "vals": [
+      "2. THE PROBLEM",
+      "Card 2 - Heading",
+      "Effort is underestimated to win the deal"
+    ]
+  },
+  {
+    "row": 30,
+    "vals": [
+      "2. THE PROBLEM",
+      "Card 2 - Content",
+      "Roles, risks and rework get left out of the first estimate. The project is signed at a price it cannot be delivered for."
+    ]
+  },
+  {
+    "row": 31,
+    "vals": [
+      "2. THE PROBLEM",
+      "Card 2 - Tag",
+      "Margin lost at signing"
+    ]
+  },
+  {
+    "row": 32,
+    "vals": [
+      "2. THE PROBLEM",
+      "Card 3 - Heading",
+      "Overruns are found too late"
+    ]
+  },
+  {
+    "row": 33,
+    "vals": [
+      "2. THE PROBLEM",
+      "Card 3 - Content",
+      "Slipping dates and rising cost show up in the monthly review or the finance report, when there is little room left to correct them."
+    ]
+  },
+  {
+    "row": 34,
+    "vals": [
+      "2. THE PROBLEM",
+      "Card 3 - Tag",
+      "Paying for late fixes"
+    ]
+  },
+  {
+    "row": 35,
+    "vals": [
+      "3. THE SHIFT",
+      "",
+      "",
+      "Dark full-width band. One large statement on the left. On the right a two-column comparison 'Estimating today' vs 'Foresprint' with four rows and a small icon per cell."
+    ]
+  },
+  {
+    "row": 36,
+    "vals": [
+      "3. THE SHIFT",
+      "H2",
+      "Past projects set the estimate. People make the call."
+    ]
+  },
+  {
+    "row": 37,
+    "vals": [
+      "3. THE SHIFT",
+      "Content",
+      "Foresprint puts the project history a firm already has to work. For a new project, its agents find the closest past matches and propose the team, timeline, budget and risks from how those projects actually went. Every suggestion shows which past project it came from, and the team can change any of it before the plan is built. Once work starts, a forecast is ready whenever someone asks for one."
+    ]
+  },
+  {
+    "row": 38,
+    "vals": [
+      "3. THE SHIFT",
+      "Row 1",
+      "Starting point | Estimating today: a spreadsheet and memory | Foresprint: the closest past projects, ranked by match"
+    ]
+  },
+  {
+    "row": 39,
+    "vals": [
+      "3. THE SHIFT",
+      "Row 2",
+      "Team structure | Estimating today: copied from the last deal that looked similar | Foresprint: proposed role by role, with a confidence score"
+    ]
+  },
+  {
+    "row": 40,
+    "vals": [
+      "3. THE SHIFT",
+      "Row 3",
+      "Project plan | Estimating today: built task by task by hand | Foresprint: full task and milestone plan generated"
+    ]
+  },
+  {
+    "row": 41,
+    "vals": [
+      "3. THE SHIFT",
+      "Row 4",
+      "Project health | Estimating today: seen in the monthly review | Foresprint: forecast on demand from live data"
+    ]
+  },
+  {
+    "row": 42,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "",
+      "",
+      "Six numbered steps. Desktop: sticky step list on the left, screenshot panel on the right that changes as the reader scrolls. Mobile: stacked cards with the screenshot under each step."
+    ]
+  },
+  {
+    "row": 43,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "H2",
+      "How Foresprint works, from new project to forecast finish"
+    ]
+  },
+  {
+    "row": 44,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Static line",
+      "The project is described once. Similar past projects are found, the team, risks, timeline and budget are proposed and reviewed, the full plan is generated, and the finish is forecast whenever it is needed."
+    ]
+  },
+  {
+    "row": 45,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 1 - Heading",
+      "Describe the project"
+    ]
+  },
+  {
+    "row": 46,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 1 - Content",
+      "Enter the project name, type, client company, industry, technology, contract value and currency, with a short description of the work."
+    ]
+  },
+  {
+    "row": 47,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 1 - Panel",
+      "Create Project form filled in"
+    ]
+  },
+  {
+    "row": 48,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 2 - Heading",
+      "Similar past projects are found"
+    ]
+  },
+  {
+    "row": 49,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 2 - Content",
+      "The project repository is searched for the closest matches. Each past project comes back with a match percentage, so the team can see how close the comparison really is."
+    ]
+  },
+  {
+    "row": 50,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 2 - Panel",
+      "Find Similar Projects results with the match % column"
+    ]
+  },
+  {
+    "row": 51,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 3 - Heading",
+      "Team, risks, timeline and budget are proposed"
+    ]
+  },
+  {
+    "row": 52,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 3 - Content",
+      "Foresprint proposes the team role by role with a confidence score, a risk register, a suggested timeline and an estimated budget. Each one sits next to the matched past project it came from, and every item can be edited."
+    ]
+  },
+  {
+    "row": 53,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 3 - Panel",
+      "Compare and Edit AI Recommendations screen showing the resource structure"
+    ]
+  },
+  {
+    "row": 54,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 4 - Heading",
+      "The full project plan is generated"
+    ]
+  },
+  {
+    "row": 55,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 4 - Content",
+      "Tasks and milestones are laid out for the whole project. Move the start date and every task date in the plan is recalculated."
+    ]
+  },
+  {
+    "row": 56,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 4 - Panel",
+      "Project Plan screen with milestones expanded"
+    ]
+  },
+  {
+    "row": 57,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 5 - Heading",
+      "Actuals are compared with the baseline"
+    ]
+  },
+  {
+    "row": 58,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 5 - Content",
+      "Once the project is running, actual progress and cost sit next to the original baseline, so drift is visible task by task."
+    ]
+  },
+  {
+    "row": 59,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 5 - Panel",
+      "Project Actuals and Baselines view"
+    ]
+  },
+  {
+    "row": 60,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 6 - Heading",
+      "The finish is forecast on demand"
+    ]
+  },
+  {
+    "row": 61,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 6 - Content",
+      "Ask for a forecast and Foresprint pulls the latest project data and checks it against how similar projects finished. It returns the estimate at completion, cost overrun and risk alerts, and suggestions on how people are being used."
+    ]
+  },
+  {
+    "row": 62,
+    "vals": [
+      "4. HOW FORESPRINT WORKS",
+      "Step 6 - Panel",
+      "AI Forecast and Estimates view with alerts"
+    ]
+  },
+  {
+    "row": 63,
+    "vals": [
+      "5. ESTIMATES BACKED BY PAST PROJECTS",
+      "",
+      "",
+      "Two columns. Left: large product screenshot of the Compare and Edit screen, with the matched past project highlighted beside the recommendation. Right: H2, body and three short points with icons. Below, a slim comparison strip: 'Rule-of-thumb estimate' vs 'Foresprint estimate'."
+    ]
+  },
+  {
+    "row": 64,
+    "vals": [
+      "5. ESTIMATES BACKED BY PAST PROJECTS",
+      "H2",
+      "Every estimate traced back to a project already delivered"
+    ]
+  },
+  {
+    "row": 65,
+    "vals": [
+      "5. ESTIMATES BACKED BY PAST PROJECTS",
+      "Content",
+      "An estimate is only as good as what it is based on. Foresprint does not start from a generic template. It starts from the past projects closest to the new one and shows the match behind every suggestion, so the person signing off on a quote can see where each number came from."
+    ]
+  },
+  {
+    "row": 66,
+    "vals": [
+      "5. ESTIMATES BACKED BY PAST PROJECTS",
+      "Point 1",
+      "Past projects ranked by how closely they match the new one"
+    ]
+  },
+  {
+    "row": 67,
+    "vals": [
+      "5. ESTIMATES BACKED BY PAST PROJECTS",
+      "Point 2",
+      "Confidence scores on every role in the proposed team"
+    ]
+  },
+  {
+    "row": 68,
+    "vals": [
+      "5. ESTIMATES BACKED BY PAST PROJECTS",
+      "Point 3",
+      "Team, risks, timeline and budget all editable before the plan is built"
+    ]
+  },
+  {
+    "row": 69,
+    "vals": [
+      "5. ESTIMATES BACKED BY PAST PROJECTS",
+      "Comparison - Rule-of-thumb estimate",
+      "Built from a template or a past deal someone remembers. Hard to explain and hard to repeat."
+    ]
+  },
+  {
+    "row": 70,
+    "vals": [
+      "5. ESTIMATES BACKED BY PAST PROJECTS",
+      "Comparison - Foresprint estimate",
+      "Built from the closest past projects, with the match shown. The same method for every proposal."
+    ]
+  },
+  {
+    "row": 71,
+    "vals": [
+      "5. ESTIMATES BACKED BY PAST PROJECTS",
+      "Image alt text",
+      "Foresprint comparing a new project estimate with a matched past project"
+    ]
+  },
+  {
+    "row": 72,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "",
+      "",
+      "Tabbed section with two tabs. Each tab: short paragraph on the left, four outcome bullets with check icons on the right, and a small screenshot strip below."
+    ]
+  },
+  {
+    "row": 73,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "H2",
+      "Built for the teams that price projects and the teams that deliver them"
+    ]
+  },
+  {
+    "row": 74,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 1 - Label",
+      "Pre-sales and solution teams"
+    ]
+  },
+  {
+    "row": 75,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 1 - H3",
+      "AI project estimation for pre-sales and bid teams"
+    ]
+  },
+  {
+    "row": 76,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 1 - Content",
+      "When several proposals are due in the same week, each one still needs a team, a timeline and a price. Foresprint builds the first estimate from the closest past projects, so the team spends its time checking and adjusting instead of starting from a blank sheet. Fixed price bids carry risks that are listed before the number is agreed."
+    ]
+  },
+  {
+    "row": 77,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 1 - Bullet 1",
+      "Every proposal estimated from real delivery history"
+    ]
+  },
+  {
+    "row": 78,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 1 - Bullet 2",
+      "One estimating standard across every bid and every estimator"
+    ]
+  },
+  {
+    "row": 79,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 1 - Bullet 3",
+      "Risks listed before the price is fixed"
+    ]
+  },
+  {
+    "row": 80,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 1 - Bullet 4",
+      "A clear reason behind every number in the quote"
+    ]
+  },
+  {
+    "row": 81,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 2 - Label",
+      "Delivery heads and PMOs"
+    ]
+  },
+  {
+    "row": 82,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 2 - H3",
+      "Project forecasting for delivery heads and PMOs"
+    ]
+  },
+  {
+    "row": 83,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 2 - Content",
+      "A signed project rarely runs exactly to plan. Foresprint compares actuals with the baseline and, whenever a forecast is asked for, checks the latest data against how similar projects finished. Cost overruns, risks and underused people show up while there is still time to act. It works for projects already running, not only new ones."
+    ]
+  },
+  {
+    "row": 84,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 2 - Bullet 1",
+      "Estimate at completion whenever it is needed"
+    ]
+  },
+  {
+    "row": 85,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 2 - Bullet 2",
+      "Cost overrun and risk alerts before the monthly review"
+    ]
+  },
+  {
+    "row": 86,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 2 - Bullet 3",
+      "Suggestions on how people across the project are being used"
+    ]
+  },
+  {
+    "row": 87,
+    "vals": [
+      "6. BUILT FOR TWO TEAMS",
+      "Tab 2 - Bullet 4",
+      "Planning for running projects as well as new ones"
+    ]
+  },
+  {
+    "row": 88,
+    "vals": [
+      "7. THE PLAN FOLLOWS THE DATE",
+      "",
+      "",
+      "New interactive block: a start-date picker on the left, a small Gantt chart of five or six example milestones on the right. Moving the date slides every bar and updates the finish date. Label as example data."
+    ]
+  },
+  {
+    "row": 89,
+    "vals": [
+      "7. THE PLAN FOLLOWS THE DATE",
+      "H2",
+      "One date change. The whole plan follows."
+    ]
+  },
+  {
+    "row": 90,
+    "vals": [
+      "7. THE PLAN FOLLOWS THE DATE",
+      "Content",
+      "Deals slip and kick-offs move. In Foresprint, changing the start date recalculates every task and milestone in the plan, so the timeline stays usable instead of being rebuilt."
+    ]
+  },
+  {
+    "row": 91,
+    "vals": [
+      "7. THE PLAN FOLLOWS THE DATE",
+      "Interactive label",
+      "Try it: move the start date"
+    ]
+  },
+  {
+    "row": 92,
+    "vals": [
+      "8. FORECAST ON DEMAND",
+      "",
+      "",
+      "Two columns. Left: H2 and body. Right: a simple chart (example data) with the baseline as a solid line, actuals as a second line, and the forecast as a dotted line from today to the projected finish, with a marker labelled 'Forecast requested'."
+    ]
+  },
+  {
+    "row": 93,
+    "vals": [
+      "8. FORECAST ON DEMAND",
+      "H2",
+      "Project forecasting whenever it is needed"
+    ]
+  },
+  {
+    "row": 94,
+    "vals": [
+      "8. FORECAST ON DEMAND",
+      "Content",
+      "Foresprint does not wait for a status report. When a forecast is asked for, it fetches the latest data from the project systems already in use and checks progress against how similar past projects finished."
+    ]
+  },
+  {
+    "row": 95,
+    "vals": [
+      "8. FORECAST ON DEMAND",
+      "Content",
+      "The answer reflects where the project stands that day: the estimate at completion, where cost is heading over budget, which risks are rising and where people are over or under used."
+    ]
+  },
+  {
+    "row": 96,
+    "vals": [
+      "9. WORKS WITH THE SYSTEMS YOU ALREADY USE",
+      "",
+      "",
+      "Layered diagram: 'Foresprint' block sitting on top of 'Your current project and delivery tools' block, with a caption line under it."
+    ]
+  },
+  {
+    "row": 97,
+    "vals": [
+      "9. WORKS WITH THE SYSTEMS YOU ALREADY USE",
+      "H2",
+      "Works with the systems you already use"
+    ]
+  },
+  {
+    "row": 98,
+    "vals": [
+      "9. WORKS WITH THE SYSTEMS YOU ALREADY USE",
+      "Content",
+      "Project tools keep running tasks, updates and day-to-day tracking. Foresprint reads from them to estimate and forecast. Nothing gets replaced and nothing gets migrated."
+    ]
+  },
+  {
+    "row": 99,
+    "vals": [
+      "9. WORKS WITH THE SYSTEMS YOU ALREADY USE",
+      "Diagram - Top block",
+      "Foresprint: estimates, plans and forecasts"
+    ]
+  },
+  {
+    "row": 100,
+    "vals": [
+      "9. WORKS WITH THE SYSTEMS YOU ALREADY USE",
+      "Diagram - Bottom block",
+      "Your current project and delivery tools: tasks, updates and tracking stay where they are"
+    ]
+  },
+  {
+    "row": 101,
+    "vals": [
+      "9. WORKS WITH THE SYSTEMS YOU ALREADY USE",
+      "Caption",
+      "Added on top. Nothing replaced."
+    ]
+  },
+  {
+    "row": 102,
+    "vals": [
+      "9. WORKS WITH THE SYSTEMS YOU ALREADY USE",
+      "Link",
+      "How the integration layer works (links to /platform)"
+    ]
+  },
+  {
+    "row": 103,
+    "vals": [
+      "10. PROJECT HEALTH REPORTING",
+      "",
+      "",
+      "Wide dashboard screenshot, or four panels in a 2 x 2 grid: actuals vs baseline, estimate at completion, cost overrun and risk alerts, resource utilization. Label it as example data."
+    ]
+  },
+  {
+    "row": 104,
+    "vals": [
+      "10. PROJECT HEALTH REPORTING",
+      "H2",
+      "Cost, risk and people in one view"
+    ]
+  },
+  {
+    "row": 105,
+    "vals": [
+      "10. PROJECT HEALTH REPORTING",
+      "Content",
+      "Alongside the plan, Foresprint shows actuals against the baseline, the forecast estimate at completion, cost overrun and risk alerts, and resource utilization insights with suggestions on where to rebalance the team."
+    ]
+  },
+  {
+    "row": 106,
+    "vals": [
+      "10. PROJECT HEALTH REPORTING",
+      "Panel",
+      "Project actuals, forecast and alerts dashboard (example data)"
+    ]
+  },
+  {
+    "row": 107,
+    "vals": [
+      "11. CONFIGURED TO HOW YOU DELIVER",
+      "",
+      "",
+      "Two contrasting cards side by side: 'Fixed estimation tools' (muted) and 'Foresprint' (highlighted). Time to value line underneath in a slim strip."
+    ]
+  },
+  {
+    "row": 108,
+    "vals": [
+      "11. CONFIGURED TO HOW YOU DELIVER",
+      "H2",
+      "Configured to how you deliver"
+    ]
+  },
+  {
+    "row": 109,
+    "vals": [
+      "11. CONFIGURED TO HOW YOU DELIVER",
+      "Card 1 - Heading",
+      "Fixed estimation tools"
+    ]
+  },
+  {
+    "row": 110,
+    "vals": [
+      "11. CONFIGURED TO HOW YOU DELIVER",
+      "Card 1 - Content",
+      "Most estimation tools work from generic formulas. The inputs are fixed, the model is fixed, and the result has little to do with how your own teams actually deliver."
+    ]
+  },
+  {
+    "row": 111,
+    "vals": [
+      "11. CONFIGURED TO HOW YOU DELIVER",
+      "Card 2 - Heading",
+      "Foresprint"
+    ]
+  },
+  {
+    "row": 112,
+    "vals": [
+      "11. CONFIGURED TO HOW YOU DELIVER",
+      "Card 2 - Content",
+      "Estimates come from your own delivery history. Which project details are compared, which risks are tracked, how the plan is laid out and what the forecast shows are all set to how your firm works. When the way you deliver changes, the configuration changes with it."
+    ]
+  },
+  {
+    "row": 113,
+    "vals": [
+      "11. CONFIGURED TO HOW YOU DELIVER",
+      "Time to value",
+      "First configuration live in a day. First measurable ROI in three to six weeks."
+    ]
+  },
+  {
+    "row": 114,
+    "vals": [
+      "11. CONFIGURED TO HOW YOU DELIVER",
+      "Qualifier",
+      "Outcome ranges are representative and validated per engagement."
+    ]
+  },
+  {
+    "row": 115,
+    "vals": [
+      "12. WHAT IS INCLUDED",
+      "",
+      "",
+      "Grid of eight tiles, 4 x 2 on desktop, 2 x 4 on mobile. Icon, heading, one line each."
+    ]
+  },
+  {
+    "row": 116,
+    "vals": [
+      "12. WHAT IS INCLUDED",
+      "H2",
+      "What is included in Foresprint"
+    ]
+  },
+  {
+    "row": 117,
+    "vals": [
+      "12. WHAT IS INCLUDED",
+      "Project intake",
+      "Name, type, client, industry, technology, contract value and currency captured once"
+    ]
+  },
+  {
+    "row": 118,
+    "vals": [
+      "12. WHAT IS INCLUDED",
+      "Similar project search",
+      "Past projects ranked by match percentage against the new one"
+    ]
+  },
+  {
+    "row": 119,
+    "vals": [
+      "12. WHAT IS INCLUDED",
+      "Team structure",
+      "Role-by-role team proposal with a confidence score on each role"
+    ]
+  },
+  {
+    "row": 120,
+    "vals": [
+      "12. WHAT IS INCLUDED",
+      "Risk register",
+      "Risks proposed from past projects, fully editable"
+    ]
+  },
+  {
+    "row": 121,
+    "vals": [
+      "12. WHAT IS INCLUDED",
+      "Timeline and budget",
+      "Suggested timeline and estimated budget, each tied to the matched project"
+    ]
+  },
+  {
+    "row": 122,
+    "vals": [
+      "12. WHAT IS INCLUDED",
+      "Project plan",
+      "Full task and milestone plan, recalculated when the start date moves"
+    ]
+  },
+  {
+    "row": 123,
+    "vals": [
+      "12. WHAT IS INCLUDED",
+      "Actuals and baselines",
+      "Live progress and cost compared with the original baseline"
+    ]
+  },
+  {
+    "row": 124,
+    "vals": [
+      "12. WHAT IS INCLUDED",
+      "Forecast and alerts",
+      "Estimate at completion, cost overrun and risk alerts, resource utilization suggestions"
+    ]
+  },
+  {
+    "row": 125,
+    "vals": [
+      "13. FAQ",
+      "",
+      "",
+      "Accordion. Add FAQPage schema using this exact text."
+    ]
+  },
+  {
+    "row": 126,
+    "vals": [
+      "13. FAQ",
+      "H2",
+      "Frequently asked questions"
+    ]
+  },
+  {
+    "row": 127,
+    "vals": [
+      "13. FAQ",
+      "FAQ 1 - Question",
+      "What is AI project estimation?"
+    ]
+  },
+  {
+    "row": 128,
+    "vals": [
+      "13. FAQ",
+      "FAQ 1 - Answer",
+      "AI project estimation uses data from past projects to work out the team, timeline, budget and risks for a new one. Foresprint is an agentic project estimation and forecasting solution built on the AIQoD platform. It finds the past projects closest to the new one and builds the estimate from how they actually ran. People review and approve every estimate."
+    ]
+  },
+  {
+    "row": 129,
+    "vals": [
+      "13. FAQ",
+      "FAQ 2 - Question",
+      "Is Foresprint a project management tool?"
+    ]
+  },
+  {
+    "row": 130,
+    "vals": [
+      "13. FAQ",
+      "FAQ 2 - Answer",
+      "No. Foresprint does not run or manage projects. It plans, estimates and forecasts, for new projects and for projects already running. Your project management tools keep doing the day-to-day tracking."
+    ]
+  },
+  {
+    "row": 131,
+    "vals": [
+      "13. FAQ",
+      "FAQ 3 - Question",
+      "Does Foresprint work with our existing project tools?"
+    ]
+  },
+  {
+    "row": 132,
+    "vals": [
+      "13. FAQ",
+      "FAQ 3 - Answer",
+      "Yes. It works with the systems you already use and reads project data from them. Tasks, updates and tracking stay where they are. Nothing is replaced or migrated."
+    ]
+  },
+  {
+    "row": 133,
+    "vals": [
+      "13. FAQ",
+      "FAQ 4 - Question",
+      "Where do the estimates come from?"
+    ]
+  },
+  {
+    "row": 134,
+    "vals": [
+      "13. FAQ",
+      "FAQ 4 - Answer",
+      "From your own project history. Foresprint searches past projects for the closest matches to the new one and shows each match with a percentage. The proposed team, risks, timeline and budget are each shown next to the past project they came from."
+    ]
+  },
+  {
+    "row": 135,
+    "vals": [
+      "13. FAQ",
+      "FAQ 5 - Question",
+      "Can Foresprint be used on a project that is already running?"
+    ]
+  },
+  {
+    "row": 136,
+    "vals": [
+      "13. FAQ",
+      "FAQ 5 - Answer",
+      "Yes. It works for new projects and existing ones. For a running project it compares actuals with the baseline and forecasts the finish."
+    ]
+  },
+  {
+    "row": 137,
+    "vals": [
+      "13. FAQ",
+      "FAQ 6 - Question",
+      "How does project forecasting work in Foresprint?"
+    ]
+  },
+  {
+    "row": 138,
+    "vals": [
+      "13. FAQ",
+      "FAQ 6 - Answer",
+      "Forecasts are on demand. When a forecast is requested, Foresprint fetches the latest data from your project systems and checks it against how similar past projects finished. It returns the estimate at completion, cost overrun and risk alerts, and resource utilization suggestions."
+    ]
+  },
+  {
+    "row": 139,
+    "vals": [
+      "13. FAQ",
+      "FAQ 7 - Question",
+      "Does Foresprint calculate estimate at completion (EAC)?"
+    ]
+  },
+  {
+    "row": 140,
+    "vals": [
+      "13. FAQ",
+      "FAQ 7 - Answer",
+      "Yes. Every forecast includes the estimate at completion, based on current progress and the performance of similar past projects."
+    ]
+  },
+  {
+    "row": 141,
+    "vals": [
+      "13. FAQ",
+      "FAQ 8 - Question",
+      "Can Foresprint help with fixed price project estimation?"
+    ]
+  },
+  {
+    "row": 142,
+    "vals": [
+      "13. FAQ",
+      "FAQ 8 - Answer",
+      "Yes. Pre-sales and bid teams use it to estimate proposals from real delivery history, with risks listed before the price is fixed and a clear source behind every number in the quote."
+    ]
+  },
+  {
+    "row": 143,
+    "vals": [
+      "13. FAQ",
+      "FAQ 9 - Question",
+      "Can the team change what Foresprint suggests?"
+    ]
+  },
+  {
+    "row": 144,
+    "vals": [
+      "13. FAQ",
+      "FAQ 9 - Answer",
+      "Yes. The proposed team, risk register, timeline and budget can all be edited before the project plan is generated. People make the final call."
+    ]
+  },
+  {
+    "row": 145,
+    "vals": [
+      "13. FAQ",
+      "FAQ 10 - Question",
+      "What happens when the project start date changes?"
+    ]
+  },
+  {
+    "row": 146,
+    "vals": [
+      "13. FAQ",
+      "FAQ 10 - Answer",
+      "Every task and milestone date in the plan is recalculated. The plan does not need to be rebuilt."
+    ]
+  },
+  {
+    "row": 147,
+    "vals": [
+      "13. FAQ",
+      "FAQ 11 - Question",
+      "Does Foresprint warn about cost overruns?"
+    ]
+  },
+  {
+    "row": 148,
+    "vals": [
+      "13. FAQ",
+      "FAQ 11 - Answer",
+      "Yes. Each forecast flags where cost is heading over budget and which risks are rising, along with suggestions on how people across the project are being used."
+    ]
+  },
+  {
+    "row": 149,
+    "vals": [
+      "13. FAQ",
+      "FAQ 12 - Question",
+      "How long does it take to go live?"
+    ]
+  },
+  {
+    "row": 150,
+    "vals": [
+      "13. FAQ",
+      "FAQ 12 - Answer",
+      "The first configuration goes live in a day, with measurable results typically inside three to six weeks."
+    ]
+  },
+  {
+    "row": 151,
+    "vals": [
+      "14. FINAL CTA",
+      "",
+      "",
+      "Full-width band in brand colour. H2 centred, one line, two buttons."
+    ]
+  },
+  {
+    "row": 152,
+    "vals": [
+      "14. FINAL CTA",
+      "H2",
+      "See Foresprint estimate a real project"
+    ]
+  },
+  {
+    "row": 153,
+    "vals": [
+      "14. FINAL CTA",
+      "Content",
+      "Bring a project you are pricing now. In twenty minutes, see Foresprint find similar past projects and build the team, timeline, budget and full plan."
+    ]
+  },
+  {
+    "row": 154,
+    "vals": [
+      "14. FINAL CTA",
+      "Primary CTA",
+      "Book a demo"
+    ]
+  },
+  {
+    "row": 155,
+    "vals": [
+      "14. FINAL CTA",
+      "Secondary CTA",
+      "Contact us (links to /contact-us)"
+    ]
+  }
+]
